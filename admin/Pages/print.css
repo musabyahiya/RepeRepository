@@ -1,0 +1,50 @@
+@media print
+{
+	.trPrint{
+		background-color: red;
+		line-height: 1.6;
+		color: white;
+	}
+
+.label
+{
+	font-size: 15pt;
+	font-weight: bold;
+
+}
+.contents
+{
+	border: 1px dotted black;
+	padding: 5px;
+	width: 300px;
+}
+.name
+{
+	color: red;
+}
+.left
+{
+	float: left;
+	width: 50px;
+	height: 50px;
+}
+.right
+{
+	margin-left: 60px;
+	line-height:50px;
+	background-color:green;
+}
+.clear
+{
+	clear: both;
+}
+
+body
+{
+	-webkit-print-color-adjust: exact !important;
+}
+table td
+{
+	font-size:16px;
+}
+}
