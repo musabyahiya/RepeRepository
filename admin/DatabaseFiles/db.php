@@ -5,7 +5,6 @@ function GetResultJSON($con, $query)
 {
 	try
 	{
-		
 		$result = $con->query($query);
 		$arr = array();
 		if ($result->num_rows > 0) {
