@@ -17,6 +17,7 @@ function GetResultJSON($con, $query)
 	catch(Exception $e)
 	{
 		echo json_encode($e);
+		
 	}
 	finally
 	{
