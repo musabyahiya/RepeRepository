@@ -184,14 +184,14 @@ if(!isset($_SESSION['UserId'])){
 		<td class="project-title tdMembershipType">${MembershipType}</td>
 		<td class="project-title tdRealEstate">${RealEstate}</td>
 		<td class="project-title tdLocation">${Location}</td>
-		<td class="project-title tdCellNo">${JSON.parse(CellNo)[0].CellNo}</td>
+		<td class="project-title tdCellNo">&nbsp;${JSON.parse(CellNo)[0].CellNo}</td>
 		<td class="project-title tdLandline">${JSON.parse(Landline)[0].Landline}</td>
 		<td class="project-title tdWhatsAppNo">${WhatsAppNo}</td>
 		<td class="project-title tdEmail">${Email}</td>
 		<td class="project-title tdDob ">${formatDate(Dob)}</td>
 		<td class="project-title tdCity">${City}</td>
 		<td class="project-title tdPresentAddress">${PresentAddress}</td>
-		<td class="project-title tdCNIC">(${CNIC})</td>
+		<td class="project-title tdCNIC">&nbsp;${CNIC}</td>
 		<td class="project-title tdQualification">${Qualification}</td>
 		<td class="project-title tdDecipline">${Decipline}</td>
 		<td class="project-title tdMembershipNo">${ParentDesignation} - ${SubDesignation}</td>
@@ -207,8 +207,8 @@ if(!isset($_SESSION['UserId'])){
 		<td class="project-title tdMembershipType">${MembershipType}</td>
 		<td class="project-title tdRealEstate">${RealEstate}</td>
 		<td class="project-title tdLocation">${Location}</td>
-		<td class="project-title tdCellNo">${JSON.parse(CellNo)[0].CellNo}</td>
-		<td class="project-title tdLandline">${JSON.parse(Landline)[0].Landline}</td>
+		<td class="project-title tdCellNo">&nbsp;${JSON.parse(CellNo)[0].CellNo}</td>
+		<td class="project-title tdLandline">&nbsp;${JSON.parse(Landline)[0].Landline}</td>
 		<td class="project-title tdWhatsAppNo">${WhatsAppNo}</td>
 		<td class="project-title tdEmail">${Email}</td>
 		<td class="project-title tdMembershipFee">${MembershipFee}</td>
@@ -227,8 +227,8 @@ if(!isset($_SESSION['UserId'])){
 		<td class="project-title tdMembershipType">${MembershipType}</td>
 		<td class="project-title tdRealEstate">${RealEstate}</td>
 		<td class="project-title tdLocation">${Location}</td>
-		<td class="project-title tdCellNo">${JSON.parse(CellNo)[0].CellNo}</td>
-		<td class="project-title tdLandline">${JSON.parse(Landline)[0].Landline}</td>
+		<td class="project-title tdCellNo">&nbsp;${JSON.parse(CellNo)[0].CellNo}</td>
+		<td class="project-title tdLandline">&nbsp;${JSON.parse(Landline)[0].Landline}</td>
 		<td class="project-title tdWhatsAppNo">${WhatsAppNo}</td>
 		<td class="project-title tdEmail">${Email}</td>
 	</tr>

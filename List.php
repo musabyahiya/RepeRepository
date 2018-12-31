@@ -97,7 +97,7 @@
               <div class=" col-md-9 col-lg-9 " style="margin-top: 25px;"> 
                 <div class="panel-heading">
                   <div>
-                    <h6 class="top-modal" style=" float: right; font-size:14px;margin-left:5px;">123</h6>
+                    <h6 class="top-modal" class="tdMembershipNo" style=" float: right; font-size:14px;margin-left:5px;"></h6>
                     <h6 class="panel-title" style="float: right;font-size:14px;">Membership#</h6>
 
 
@@ -107,15 +107,15 @@
                     <h6 class="" style="float:right;  margin-left: 10px; font-size:14px;" >Membership type</h6> 
                   </div>
 
-                  <br>
-                  <div style="margin-top: 30px;">
+                 
+                  <div style="margin-top: 35px;">
                     <h6 class="tdSubDesignation  top-modal" style="float: right; font-size:14px;margin-left: 2px;"></h6>
                     <h6 class="tdDesignation top-modal" style="float: right; margin-left: 5px; font-size:14px;"></h6>
                     <h6 class="tdParentDesignation" style="float: right; font-size:14px;"></h6>
 
 
                     <br>
-                    <h6 class="top-modal" style="float:right;  margin-left: 10px; font-size:14px;" >(2018-11-17 to 2018-12-18)</h6>    
+                    <h6 class="top-modal tdTenure" style="float:right;  margin-left: 10px; font-size:14px;" ></h6>    
                     <h6 style="float: right; font-size:14px;">Tenure</h6>
 
                   </div>
@@ -158,7 +158,7 @@
                 <td class="tdEmail" style="padding-left: 30px;"></td>
               </tr>
               <tr>
-                <td>Linkdin</td>
+                <td>Linkedin</td>
                 <td><a href="" class="tdLinkdin" target="blank" style="padding-left: 30px;">click here to preview</a></td>
               </tr>
               <tr>
@@ -180,11 +180,11 @@
               </div>
               <tr>
                 <td>Certification course</td>
-                <td style="padding-left:55px;">Apr-June | 2015</td>
+                <td class="tdCertificateCoursePrint" style="padding-left:55px;"></td>
               </tr>
               <tr>
                 <td>Diploma course</td>
-                <td style="padding-left:55px;">Jan-Mar | 2014</td>
+                <td class="tdDiplomaCoursePrint" style="padding-left:55px;"></td>
               </tr>
             </tbody>
           </table>
@@ -227,7 +227,7 @@
               <td class="tdLocation" style="padding-left: 38px;"></td>
             </tr>
             <tr>
-              <td>Work area</td>
+              <td>Working area</td>
               <td class="tdWorkArea"  style="padding-left: 38px;"></td>
             </tr>
 
@@ -286,7 +286,7 @@
 
                <td align="right">
 
-                <label style="background: #c8560f;color: #fff;padding: 2px;margin: -3px;border-radius: 4px;">000123</label>
+                <label style="background: #c8560f;color: #fff;padding: 2px;margin: -3px;border-radius: 4px;"></label>
                 <br>
 
                 <label class="tdMembershipType" style="background: #c8560f;color: #fff;padding: 2px;margin: -3px;border-radius: 4px;"></label>
@@ -295,7 +295,7 @@
                 <label class="tdDesignation tdSubDesignation" style="background: #c8560f;color: #fff;padding: 2px;margin: -3px;border-radius: 4px;"></label>
                 <br>
 
-                <label style="background: #c8560f;color: #fff;padding: 2px;margin: 0px;border-radius: 4px;">2018-11-17 to 2018-12-18</label>
+                <label class="tdTenure" style="background: #c8560f;color: #fff;padding: 2px;margin: 0px;border-radius: 4px;"></label>
               </td>
             </tr>
           </thead>
@@ -382,7 +382,7 @@
               Website
             </td>
             <td style="border-bottom: 1px solid #e7eaec"> 
-              <a href="#" class="tdWebsite tdText"></a></td>
+              <a href="#" target="_blank" class="tdWebsite tdText"></a></td>
             </tr>
             <tr style="line-height:30px">
               <td style="border-bottom: 1px solid #e7eaec" class="tdText">
@@ -454,6 +454,7 @@
     <input type="hidden" class="hdnSpecialization" value="${Specialization}" />
     <input type="hidden" class="hdnNationalityId" value="${NationalityId}" />
     <input type="hidden" class="hdnMembershipTypeId" value="${MembershipTypeId}" />
+    <input type="hidden" class="hdnMembershipNo" value="${MembershipNo}" />
     <input type="hidden" class="hdnJsonWorkInfo" value="${JsonWorkInfo}" />
     <input type="hidden" class="hdnIsMember" value="${IsMember}" />
     <input type="hidden" class="hdnName" value="${FirstName} ${MiddleName} ${LastName}" />
@@ -469,10 +470,20 @@
     <input type="hidden" class="hdnFacebook" value="${Facebook}" />
     <input type="hidden" class="hdnLinkdin" value="${Linkdin}" />
     <input type="hidden" class="hdnWebsite" value="${Website}" />
+    <input type="hidden" class="hdnStartDate" value="${formatDate(StartDate)}" />
+    <input type="hidden" class="hdnEndDate" value="${formatDate(EndDate)}" />
+    <input type="hidden" class="hdnQualificationType" value="${QualificationType}" />
+	<input type="hidden" class="hdnDiplomaSessionId" value="${DiplomaSessionId}" />
+	<input type="hidden" class="hdnDiplomaSession" value="${DiplomaSession}" />
+	<input type="hidden" class="hdnDiplomaYear" value="${DiplomaYear}" />
+	<input type="hidden" class="hdnCertificateSessionId" value="${CertificateSessionId}" />
+	<input type="hidden" class="hdnCertificateSession" value="${CertificateSession}" />
+	<input type="hidden" class="hdnCertificateYear" value="${CertificateYear}" />
     <td></td>
     <td class="project-title tdNameTable">${FirstName} ${MiddleName} ${LastName}</td>
+     <td class="project-title tdMembershipTypeTable">${MembershipType}</td>
     <td class="project-title tdQualificationTable">{{html htmlBr(JsonWorkInfo,'Organization') }}</td>
-    <td class="project-title tdMembershipTypeTable">${MembershipType}</td>
+   
     <td class="project-title tdEmailTable">${Email}</td>
     <td class="project-title">
       <input type="button" data-toggle="modal" data-target="#ViewProfileModal" onclick="BindProfile(this)" value="View Profile" class="btn btn-group btn-xs btn-primary">

@@ -160,6 +160,7 @@ function AllClickFunction() {
 		Members[0].Linkdin = $(".txtLinkdin").val();
 		Members[0].Website = $(".txtWebsite").val();
 		Members[0].Facebook = $(".txtFacebook").val();
+		Members[0].MembershipNo = $(".txtMembershipNo").val();
 		Members[0].RealEstate = $(".txtRealEstate").val();
 		Members[0].BusinessStartedYear = $(".ddlBusinessStartedYear").val();
 		Members[0].DeciplineId = $(".ddlDecipline").val();
@@ -182,14 +183,14 @@ function AllClickFunction() {
 		Members[0].FileImage = FileUpload(".txtFileImage").trim();
 		Members[0].FileCNIC = FileUpload(".txtFileCNIC").trim();
 		Members[0].IsMember = 0;
-		Members[0].MembershipNo = 0;
+		Members[0].MembershipNo = $(".txtMembershipNo").val();
 
 
 		if (!isValidEmailAddress(Members[0].Email)) {
 			showError("Email is Incorrect!");
 			return;
 		}
-	//	CreateNewMember();
+		CreateNewMember();
 });
 
 	$(".btnUpdateChanges").click(function() {
@@ -226,6 +227,7 @@ function AllClickFunction() {
 		Members[0].Linkdin = $(".txtLinkdin_upd").val();
 		Members[0].Website = $(".txtWebsite_upd").val();
 		Members[0].Facebook = $(".txtFacebook_upd").val();
+		Members[0].MembershipNo = $(".txtMembershipNo_upd").val();
 		Members[0].RealEstate = $(".txtRealEstate_upd").val();
 		Members[0].BusinessStartedYear = $(".ddlBusinessStartedYear_upd").val();
 		Members[0].DeciplineId = $(".ddlDecipline_upd").val();
@@ -246,7 +248,7 @@ function AllClickFunction() {
 		Members[0].StartDate = formatDate($(".txtStartDate_upd").val());
 		Members[0].EndDate = formatDate($(".txtEndDate_upd").val());
 		Members[0].IsMember = 0;
-		Members[0].MembershipNo = 0;
+		Members[0].MembershipNo = $(".txtMembershipNo_upd").val();
 
 		UpdateNewMember();
 	});
@@ -259,9 +261,9 @@ function UpdateNewMember() {
 		data: Members[0]
 	});
 	request.done(function(data) {
-		var res = data;
+		var res = JSON.parse(data);
 		if (res > 0) {
-			InitEditControls();
+			InitEditControls('Update');
 			GetAllMember();
 			showSuccess("Successfully Updated!");
 		}
@@ -271,17 +273,22 @@ function UpdateNewMember() {
 	});
 }
 
-function InitEditControls() {
-	workinfo = [];
-	$('.ValidateWorkInfo_upd').remove()
+function InitEditControls(Action) {
+    if(Action=='Retrieve')
+    {
+        $('.ValidateWorkInfo_upd').remove();
+        $('.ValidateWorkArea_upd').remove();
+        $('.ValidateDealership_upd').remove();
+        $('.ValidateCellNo_upd').remove();
+        $('.ValidateLandline_upd').remove();
+    }
+    workinfo = [];
 	workarea = [];
-	$('.ValidateWorkArea_upd').remove()
 	dealership = [];
-	$('.ValidateDealership_upd').remove()
 	cellno = [];
-	$('.ValidateCellNo_upd').remove()
 	landline = [];
-	$('.ValidateLandline_upd').remove()
+    
+	
 }
 
 function EditIsMember(selector) {
@@ -302,7 +309,7 @@ function UpdateMemberStatus(NotificationTypeId , Message) {
 		data: { MembershipId: MembershipId, IsMember: IsMember, NotificationTypeId : NotificationTypeId , Message : Message  }
 	});
 	request.done(function(data) {
-		var res = data;
+		var res = JSON.parse(data);
 
 		if (res == 1) {
 			GetAllMember();
@@ -320,7 +327,7 @@ function UpdateAttachments(FileImage , FileCNIC) {
 		data: { MembershipId: Members[0].MembershipId, FileImage: FileImage, FileCNIC : FileCNIC }
 	});
 	request.done(function(data) {
-		var res = data;
+		var res = JSON.parse(data);
 
 		if (res == 1) {
 			GetAllMember();
@@ -334,7 +341,7 @@ function UpdateAttachments(FileImage , FileCNIC) {
 
 function editMembership(selector) {
 	objEditRow = $(selector).closest("tr");
-	InitEditControls();
+	InitEditControls('Retrieve');
 	Members[0].MembershipId = objEditRow.find(".hdnMembershipId").val();
 
 	$(".ddlTitle_upd").val(objEditRow.find(".hdnTitleId").val().trim());
@@ -401,6 +408,7 @@ function editMembership(selector) {
 		.trim()
 		);
 	$(".txtFacebook_upd").val(objEditRow.find(".hdnFacebook").val());
+	$(".txtMembershipNo_upd").val(objEditRow.find(".hdnMembershipNo").val());
 	$(".txtWebsite_upd").val(objEditRow.find(".hdnWebsite").val());
 	$(".txtRealEstate_upd").val(objEditRow.find(".tdRealEstate").text().trim());
 	$(".ddlBusinessStartedYear_upd").val(objEditRow.find(".tdBusinessStartedYear").text().trim());
@@ -480,9 +488,9 @@ function editMembership(selector) {
   	}
   	function onGetAllMember(data) {
   		try {
-  			var res = data;
+  			var res = JSON.parse(data);
   			MembershipList = res;
-    // var res = data;
+    // var res = JSON.parse(data);
 
     var divTbodyGoalFund = $(".MemberListing").html("");
     $("#MemberListing").tmpl(res).appendTo(divTbodyGoalFund);
@@ -521,8 +529,15 @@ function BindProfile(selector)
 		BindTextToSelector('.tdAgencylocationPrint', objEditRow.find('.tdLocation').text());
 		BindTextToSelector('.tdWorkingAreaPrint', htmlComma(objEditRow.find('.hdnWorkArea').val(),'WorkArea'));
 		BindTextToSelector('.tdDealershipPrint', htmlComma(objEditRow.find('.hdnDealership').val(),'Dealership'));
-		BindTextToSelector('.tdCertificateCoursePrint', objEditRow.find('.hdnQualificationType').val() != 1 ? 'N/A' :  objEditRow.find('.hdnCertificateSession').val() +' | '+objEditRow.find('.hdnCertificateYear').val());
+		BindTextToSelector('.tdCertificateCoursePrint', objEditRow.find('.hdnQualificationType').val() != 1  ? 'N/A' :  objEditRow.find('.hdnCertificateSession').val() +' | '+objEditRow.find('.hdnCertificateYear').val());
 		BindTextToSelector('.tdDiplomaCoursePrint', objEditRow.find('.hdnQualificationType').val() != 2 ? 'N/A' :  objEditRow.find('.hdnDiplomaSession').val() +' | '+objEditRow.find('.hdnDiplomaYear').val());
+	
+	    if(objEditRow.find('.hdnQualificationType').val()==3)
+	    {
+	        	BindTextToSelector('.tdCertificateCoursePrint', objEditRow.find('.hdnCertificateSession').val() +' | '+objEditRow.find('.hdnCertificateYear').val());
+	        	BindTextToSelector('.tdDiplomaCoursePrint',   objEditRow.find('.hdnDiplomaSession').val() +' | '+objEditRow.find('.hdnDiplomaYear').val());
+	
+	    }
 		BindTextToSelector('.tdParentDesignationPrint', objEditRow.find('.hdnParentDesignation').val());
 		BindTextToSelector('.tdMembershipNoPrint', objEditRow.find('.hdnMembershipNo').val());
 		BindTextToSelector('.tdMembershipTypePrint', objEditRow.find('.tdMembershipType').text());
@@ -552,11 +567,11 @@ function htmlComma( Json,Key)
 		if((index%3==0)&& (index !=0))
 		{
 			b += '</br>';
-			b += item[Key]+', ';
+			b += item[Key]+' | ';
 		}
 		else
 		{
-			b += item[Key]+', ';
+			b += item[Key]+' | ';
 		}
 		
 		index++;
@@ -574,11 +589,7 @@ function CreateNewMember() {
 	request.done(function(data) {
 		if (data > 0) {
 			showSuccess("Successfully Created!");
-			workinfo = [];
-			workarea = [];
-			dealership = [];
-			cellno = [];
-			landline = [];
+			InitEditControls('Insert');
 			GetAllMember();
 		}
 	});
@@ -654,7 +665,7 @@ function GetAllSubDesignation() {
 		data: {}
 	});
 	request.done(function(data) {
-		var res = data;
+		var res = JSON.parse(data);
 		SubDesignationList = res;
 
     //onGetAllSubDesignation(data);
@@ -666,7 +677,7 @@ function GetAllSubDesignation() {
 
 function onGetAllSubDesignation(data) {
 	try {
-		/*  var res = data;*/
+		/*  var res = JSON.parse(data);*/
 		FillDropDownByReference(".ddlSubDesignation", data);
 		FillDropDownByReference(".ddlSubDesignation_upd", data);
 	} catch (Err) {
@@ -690,8 +701,8 @@ function GetAllNationality() {
 
 function onGetAllNationality(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlNationality", res);
 		FillDropDownByReference(".ddlNationality_upd", res);
 	} catch (Err) {
@@ -715,8 +726,8 @@ function GetAllCertificateSession() {
 
 function onGetAllCertificateSession(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlCertificateSession", res);
 		FillDropDownByReference(".ddlCertificateSession_upd", res);
 	} catch (Err) {
@@ -740,8 +751,8 @@ function GetAllDiplomaSession() {
 
 function onGetAllDiplomaSession(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlDiplomaSession", res);
 		FillDropDownByReference(".ddlDiplomaSession_upd", res);
 	} catch (Err) {
@@ -765,8 +776,8 @@ function GetAllDecipline() {
 
 function onGetAllDecipline(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlDecipline", res);
 		FillDropDownByReference(".ddlDecipline_upd", res);
 	} catch (Err) {
@@ -781,7 +792,7 @@ function GetAllMembershipFee() {
 		data: {}
 	});
 	request.done(function(data) {
-		var res = data;
+		var res = JSON.parse(data);
 
 		MembershipFeeList = res;
 	});
@@ -792,7 +803,7 @@ function GetAllMembershipFee() {
 
 function onGetAllMembershipFee(data) {
 	try {
-		/*  var res = data;*/
+		/*  var res = JSON.parse(data);*/
 		
 		FillDropDownByReference(".ddlMembershipFee", data);
 		FillDropDownByReference(".ddlMembershipFee_upd", data);
@@ -808,7 +819,7 @@ function GetAllDesignation() {
 		data: {}
 	});
 	request.done(function(data) {
-		var res = data;
+		var res = JSON.parse(data);
 		DesignationList = res;
 	});
 	request.fail(function(jqXHR, textStatus) {
@@ -818,7 +829,7 @@ function GetAllDesignation() {
 
 function onGetAllDesignation(data) {
 	try {
-		/*  var res = data;*/
+		/*  var res = JSON.parse(data);*/
 
 		FillDropDownByReference(".ddlDesignation", data);
 		FillDropDownByReference(".ddlDesignation_upd", data);
@@ -843,8 +854,8 @@ function GetAllMembershipType() {
 
 function onGetAllMembershipType(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlMembershipType", res);
 		FillDropDownByReference(".ddlMembershipType_upd", res);
 	} catch (Err) {
@@ -868,8 +879,8 @@ function GetAllParentDesignation() {
 
 function onGetAllParentDesignation(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlParentDesignation", res);
 		FillDropDownByReference(".ddlParentDesignation_upd", res);
 	} catch (Err) {
@@ -893,8 +904,8 @@ function GetAllTitle() {
 
 function onGetAllTitle(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlTitle", res);
 		FillDropDownByReference(".ddlTitle_upd", res);
 	} catch (Err) {
@@ -917,8 +928,8 @@ function GetAllNotificationType() {
 
 function onGetAllNotificationType(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		NotificationTypeList = res;
 		//FillDropDownByReference(".ddlNotificationType", res);
 		//FillDropDownByReference(".ddlNotificationType_upd", res);
@@ -942,8 +953,8 @@ function GetAllYears() {
 
 function onGetAllYears(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlBusinessStartedYear", res);
 		FillDropDownByReference(".ddlBusinessStartedYear_upd", res);
 		FillDropDownByReference(".ddlPassedYear", res);
@@ -969,8 +980,8 @@ function GetAllQualification() {
 
 function onGetAllQualification(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlQualification", res);
 		FillDropDownByReference(".ddlQualification_upd", res);
 	} catch (Err) {
@@ -1401,7 +1412,7 @@ function AppendAddLandline_upd(selector) {
 	html +=
 	" &nbsp; <a href='#' style='color:black' onclick='RemoveLandline_upd(this)'><i class='fa fa-minus-square'></i></a>";
 	html +=
-	"<input type='text' class='form-control txtLandline' id='txtLandline' placeholder='Enter landline no'>";
+	"<input type='text' class='form-control txtLandline' value=''  id='txtLandline' placeholder='Enter landline no'>";
 	html += "</div>";
 	html += "</div>";
 

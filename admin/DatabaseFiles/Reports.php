@@ -33,12 +33,12 @@
  		FROM members M 
 
 
- 		inner join qualification Q on Q.QualificationId = M.QualificationId
- 		inner join membershiptype MT on MT.MembershipTypeId = M.MembershipTypeId
- 		inner join membershipfee MF on MF.MembershipFeeId = M.MembershipFeeId
- 		inner join decipline DC  on DC.DeciplineId = M.DeciplineId
- 		inner join parentdesignation PD on PD.ParentDesignationId = M.ParentDesignationId
- 		inner join subdesignation SD on SD.SubDesignationId = M.SubDesignationId
+ 		left join qualification Q on Q.QualificationId = M.QualificationId
+ 		left join membershiptype MT on MT.MembershipTypeId = M.MembershipTypeId
+ 		left join membershipfee MF on MF.MembershipFeeId = M.MembershipFeeId
+ 		left join decipline DC  on DC.DeciplineId = M.DeciplineId
+ 		left join parentdesignation PD on PD.ParentDesignationId = M.ParentDesignationId
+ 		left join subdesignation SD on SD.SubDesignationId = M.SubDesignationId
 
  		where M.IsActive = 1 order by M.CreatedDate desc
  		";

@@ -110,7 +110,7 @@
  	$message .= "<table style='background-color:#fff;width:600px;margin:0 auto;margin-top:20px;padding: 20px;'>";
  	$message .= "<tr style='background-color: #26333c;width: 100%;'>";
  	$message .= "<td style='padding: 15px;'>";
- 	$message .= "<img src='http://repa.org.pk/logo-repa-resize.png' alt='Logo'>";
+ 	$message .= "<img src='https://www.segmite.org/Live/logo-repa-resize.png' alt='Logo'>";
  	$message .= "</td>";
  	$message .= "</tr>";
  	$message .= "<tr>";
@@ -168,7 +168,7 @@
  	$message .= "<table style='background-color:#fff;width:600px;margin:0 auto;margin-top:20px;padding: 20px;'>";
  	$message .= "<tr style='background-color: #26333c;width: 100%;'>";
  	$message .= "<td style='padding: 15px;'>";
- 	$message .= "<img src='http://repa.org.pk/logo-repa-resize.png' alt='Logo'>";
+ 	$message .= "<img src='https://www.segmite.org/Live/logo-repa-resize.png' alt='Logo'>";
  	$message .= "</td>";
  	$message .= "</tr>";
  	$message .= "<tr>";

@@ -9,10 +9,10 @@
  	move_uploaded_file($_FILES['file']['tmp_name'], '../upload/'.$_FILES['file']['name']);
  	//$name = $_FILES['file']['tmp_name'];
  	$name = $_FILES['file']['name'];
- 	//echo $name;
+ 	echo $name;
  	//echo ltrim($name,"\n");
- 	//json_encode($name);
- 	echo json_encode($name);
+    
+// echo json_encode($name);
  }
 
 

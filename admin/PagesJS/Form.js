@@ -14,6 +14,7 @@ GetAllCertificateSession();
 GetAllDiplomaSession();
 GetAllDecipline();
 GetAllTitle();
+GetAllCountry();
 var objEditRow;
 var MembershipId;
 var MembershipFeeList;
@@ -60,6 +61,7 @@ var Members = [
 	QualificationId: 0,
 	Specialization: null,
 	Institute: null,
+	CountryId : 0,
 	PassedYear: 0,
 	MembershipTypeId: 0,
 	MembershipFeeId: 0,
@@ -91,8 +93,8 @@ function GetAllCertificateSession() {
 
 function onGetAllCertificateSession(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlCertificateSession", res);
 		FillDropDownByReference(".ddlCertificateSession_upd", res);
 	} catch (Err) {
@@ -115,8 +117,8 @@ function GetAllTitle() {
 
 function onGetAllTitle(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlTitle", res);
 		FillDropDownByReference(".ddlTitle_upd", res);
 	} catch (Err) {
@@ -139,8 +141,8 @@ function GetAllDiplomaSession() {
 
 function onGetAllDiplomaSession(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlDiplomaSession", res);
 		FillDropDownByReference(".ddlDiplomaSession_upd", res);
 	} catch (Err) {
@@ -174,7 +176,7 @@ function GetAllDesignation()
 	});
 	request.done(function(data) {
 
-		var res = data;
+		var res = JSON.parse(data);
 		DesignationList=res;
 
 	});
@@ -186,7 +188,7 @@ function GetAllDesignation()
 function onGetAllDesignation(data)
 {
 	try {
-		/*  var res = data;*/
+		/*  var res = JSON.parse(data);*/
 		var res = data;
 		
 		FillDropDownByReference('.ddlDesignation',res);
@@ -222,8 +224,8 @@ function GetAllParentDesignation()
 function onGetAllParentDesignation(data)
 { 
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference('.ddlParentDesignation',res);
 		FillDropDownByReference('.ddlParentDesignation_upd',res);
 
@@ -262,11 +264,7 @@ function AllClickFunction()
             });
 	$('.btnSaveChanges').click(function () {
 		MembershipValidation();
-		$('.txtPermanentAddress').val('N/A');
-		$('.txtWhatsAppNo').val('N/A');
-		$('.txtLandline').val('N/A');
-		$('.ddlDonarAmount').val('-1');
-
+		
 		if (!validateForm('.FrmMembership'))
 			return;
 		if (!validateForm('.Validate'))
@@ -312,6 +310,7 @@ function AllClickFunction()
 		Members[0].QualificationId = $(".ddlQualification").val();
 		Members[0].Specialization = $(".txtSpecialization").val();
 		Members[0].Institute = $(".txtInstitute").val();
+		Members[0].CountryId = $(".ddlCountry").val();
 		Members[0].PassedYear = $(".ddlPassedYear").val();
 		Members[0].MembershipTypeId = $(".ddlMembershipType").val();
 		Members[0].MembershipFeeId = $(".ddlMembershipFee").val();
@@ -411,8 +410,8 @@ function GetAllDecipline() {
 
 function onGetAllDecipline(data) {
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference(".ddlDecipline", res);
 		FillDropDownByReference(".ddlDecipline_upd", res);
 	} catch (Err) {
@@ -533,7 +532,7 @@ function GetAllMember()
 {
 	try 
 	{
-		var res = data;
+		var res = JSON.parse(data);
 		var totalExperience = 0;
 
 		$.each(JSON.parse(res[0].JsonWorkInfo), function () {
@@ -573,18 +572,18 @@ function htmlComma( Json,Key)
 		{
 			
 			b += '</br>';
-			b += item[Key]+', ';
+			b += item[Key]+' | ';
 		}
 		else
 		{
-			b += item[Key]+', ';
+			b += item[Key]+' | ';
 		}
 		
 
 		index++;
 		
 	});
-	console.log(index);
+	
 	return b.slice(0,-2);
 }
 function BindProfile(selector)
@@ -608,22 +607,32 @@ function BindProfile(selector)
 		BindTextToSelector('.tdEmail', objEditRow.find('.hdnEmail').val());
 		BindTextToSelector('.tdLocation', objEditRow.find('.hdnLocation').val());
 		BindTextToSelector('.tdMembershipType', objEditRow.find('.hdnMembershipType').val());
+		BindTextToSelector('.tdMembershipNo', objEditRow.find('.hdnMembershipNo').val());
 		BindTextToSelector('.tdDesignation', objEditRow.find('.hdnDesignation').val());
 		
 		BindTextToSelector('.tdParentDesignation', objEditRow.find('.hdnParentDesignation').val());
 		BindTextToSelector('.tdWorkArea', htmlComma(objEditRow.find('.hdnWorkArea').val(),'WorkArea'));
 		BindTextToSelector('.tdDealership', htmlComma(objEditRow.find('.hdnDealership').val(),'Dealership'));
 		BindTextToSelector('.tdWebsite', objEditRow.find('.hdnWebsite').val());
+		BindTextToSelector('.tdTenure', objEditRow.find('.hdnStartDate').val() + ' to '+objEditRow.find('.hdnEndDate').val());
+		BindTextToSelector('.tdCertificateCoursePrint', objEditRow.find('.hdnQualificationType').val() != 1 ? 'N/A' :  objEditRow.find('.hdnCertificateSession').val() +' | '+objEditRow.find('.hdnCertificateYear').val());
+		BindTextToSelector('.tdDiplomaCoursePrint', objEditRow.find('.hdnQualificationType').val() != 2 ? 'N/A' :  objEditRow.find('.hdnDiplomaSession').val() +' | '+objEditRow.find('.hdnDiplomaYear').val());
+		if(objEditRow.find('.hdnQualificationType').val()==3)
+	    {
+	        	BindTextToSelector('.tdCertificateCoursePrint', objEditRow.find('.hdnCertificateSession').val() +' | '+objEditRow.find('.hdnCertificateYear').val());
+	        	BindTextToSelector('.tdDiplomaCoursePrint',   objEditRow.find('.hdnDiplomaSession').val() +' | '+objEditRow.find('.hdnDiplomaYear').val());
+	
+	    }
 		$('.tdWebsite').html(objEditRow.find('.hdnWebsite').val());
 		$('.tdWebsite').attr('href',objEditRow.find('.hdnWebsite').val());
 		$('.tdLinkdin').attr('href',objEditRow.find('.hdnLinkdin').val());
 		$('.tdFacebook').attr('href',objEditRow.find('.hdnFacebook').val());
 		$('.tdProfilePic').attr('src','admin/upload/'+ objEditRow.find('.hdnFileImage').val().trim());
 
-		var ParentDesignationId = objEditRow.find('.hdnParentDesignation').val();
+		var ParentDesignationId = objEditRow.find('.hdnParentDesignationId').val();
 		if(ParentDesignationId==2)
 		{
-			BindTextToSelector('.tdSubDesignation', objEditRow.find('.hdnSubDesignation').val());
+			BindTextToSelector('.tdSubDesignation',' / '+ objEditRow.find('.hdnSubDesignation').val());
 		}
 
 	}
@@ -637,8 +646,8 @@ function onGetAllMember(data)
 {  
 	try 
 	{
-		var res = data;
-       // var res = data;
+		var res = JSON.parse(data);
+       // var res = JSON.parse(data);
 
        var divTbodyGoalFund = $('.MemberListing').html('');
        $('#MemberListing').tmpl(res).appendTo(divTbodyGoalFund);
@@ -665,13 +674,15 @@ function CreateNewMember()
 	});
 	request.done(function(data) {
 
-		var res = data;
+		var res = JSON.parse(data);
 		if( data>0)
 		{	
 			showSuccess('Successfully Created!');
-			workarea = [];
-			dealership = [];
-			workinfo = [];
+			 workinfo = [];
+             workarea= [];
+             dealership= [];
+             cellno= [];
+             landline= [];
 			GetAllMember();
 		}
 
@@ -797,13 +808,14 @@ function AppendAddLandline(selector) {
 	var html = "<div class='col-md-3 AppendedRowLandline ValidateLandline'>";
 	html += "<div class='form-group'>";
 	html += "<label for='txtLandline'>Landline</label>";
-	html += " &nbsp; <a href='#' style='color:black' onclick='AppendAddLandline(this)'><i class='fas fa-plus-square'></i></a>";
-	html += " &nbsp; <a href='#' style='color:black' onclick='RemoveLandline(this)'><i class='fas fa-minus-square'></i></a>";
+	html += " &nbsp; <a href='javascript:void(0)' style='color:black' onclick='AppendAddLandline(this)'><i class='fas fa-plus-square'></i></a>";
+	html += " &nbsp; <a href='javascript:void(0)' style='color:black' onclick='RemoveLandline(this)'><i class='fas fa-minus-square'></i></a>";
 	html += "<input type='text' class='form-control txtLandline numericOnly' id='txtLandline ' placeholder='Enter landline no'>";
 	html += "</div>";
 	html += "</div>";
 
 	$('.ValidateLandline:last').after($(html));
+	validateNumeric();
 
 }
 function RemoveCellNo(obj)
@@ -815,14 +827,15 @@ function AppendAddCellNo(selector) {
 		return;
 	var html = "<div class='col-md-3 AppendedRowCellNo ValidateCellNo'>";
 	html += "<div class='form-group'>";
-	html += "<label for='txtCellNo'>Cell No</label>";
-	html += " &nbsp; <a href='#' style='color:black' onclick='AppendAddCellNo(this)'><i class='fas fa-plus-square'></i></a>";
-	html += " &nbsp; <a href='#' style='color:black' onclick='RemoveCellNo(this)'><i class='fas fa-minus-square'></i></a>";
+	html += "<label for='txtCellNo'>Cell #</label>";
+	html += " &nbsp; <a href='javascript:void(0)' style='color:black' onclick='AppendAddCellNo(this)'><i class='fas fa-plus-square'></i></a>";
+	html += " &nbsp; <a href='javascript:void(0)' style='color:black' onclick='RemoveCellNo(this)'><i class='fas fa-minus-square'></i></a>";
 	html += "<input type='text' class='form-control txtCellNo numericOnly' id='txtCellNo' placeholder='Enter cell no'>";
 	html += "</div>";
 	html += "</div>";
 
 	$('.ValidateCellNo:last').after($(html));
+	validateNumeric();
 
 }
 
@@ -831,9 +844,9 @@ function AppendAddWorkArea(selector) {
 		return;
 	var html = "<div class='col-md-3 AppendedRowWorkArea ValidateWorkArea'>";
 	html += "<div class='form-group'>";
-	html += "<label for='txtWorkArea'>Work Area</label>";
-	html += " &nbsp; <a href='#' style='color:black' onclick='AppendAddWorkArea(this)'><i class='fas fa-plus-square'></i></a>";
-	html += " &nbsp; <a href='#' style='color:black' onclick='RemoveWorkArea(this)'><i class='fas fa-minus-square'></i></a>";
+	html += "<label for='txtWorkArea'>Working Area</label>";
+	html += " &nbsp; <a href='javascript:void(0)' style='color:black' onclick='AppendAddWorkArea(this)'><i class='fas fa-plus-square'></i></a>";
+	html += " &nbsp; <a href='javascript:void(0)' style='color:black' onclick='RemoveWorkArea(this)'><i class='fas fa-minus-square'></i></a>";
 	html += "<input type='text' class='form-control txtWorkArea' id='txtWorkArea' placeholder='Enter work area'>";
 	html += "</div>";
 	html += "</div>";
@@ -849,8 +862,8 @@ function AppendAddDealership(selector) {
 	var html = "<div class='col-md-3 AppendedRowDealership ValidateDealership'>";
 	html += "<div class='form-group'>";
 	html += "<label for='txtDealership'>Authorized Dealership</label>";
-	html += " &nbsp; <a href='#' style='color:black' onclick='AppendAddDealership(this)'><i class='fas fa-plus-square'></i></a>";
-	html += " &nbsp; <a href='#' style='color:black' onclick='RemoveDealership(this)'><i class='fas fa-minus-square'></i></a>";
+	html += " &nbsp; <a href='javascript:void(0)' style='color:black' onclick='AppendAddDealership(this)'><i class='fas fa-plus-square'></i></a>";
+	html += " &nbsp; <a href='javascript:void(0)' style='color:black' onclick='RemoveDealership(this)'><i class='fas fa-minus-square'></i></a>";
 	html += "<input type='text' class='form-control txtDealership' id='txtDealership' placeholder='Enter authorized dealership'>";
 	html += "</div>";
 	html += "</div>";
@@ -890,8 +903,8 @@ function GetAllNationality()
 function onGetAllNationality(data)
 { 
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference('.ddlNationality',res);
 		FillDropDownByReference('.ddlNationality_upd',res);
 
@@ -902,6 +915,42 @@ function onGetAllNationality(data)
 	}
 }
 
+function GetAllCountry()
+{
+	
+	var request = $.ajax({
+		method: "POST",
+		url:    "admin/DatabaseFiles/Form.php?action=GetAllCountry",
+		data: {}
+	});
+	request.done(function(data) {
+
+		onGetAllCountry(data);
+		
+		
+	});
+	request.fail(function(jqXHR, textStatus) {
+		console.log(textStatus);
+
+	});
+}
+
+
+
+function onGetAllCountry(data)
+{ 
+	try {
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
+		FillDropDownByReference('.ddlCountry',res);
+		FillDropDownByReference('.ddlCountry_upd',res);
+
+	}
+
+	catch (Err) {
+		console.log(Err);
+	}
+}
 
 function GetAllMembershipFee()
 {
@@ -913,7 +962,7 @@ function GetAllMembershipFee()
 	});
 	request.done(function(data) {
 
-		var res = data;
+		var res = JSON.parse(data);
 		MembershipFeeList = res;
 		
 	});
@@ -926,7 +975,7 @@ function GetAllMembershipFee()
 function onGetAllMembershipFee(data)
 {
 	try {
-		/*  var res = data;*/
+		/*  var res = JSON.parse(data);*/
 		var res = (data);
 		FillDropDownByReference('.ddlMembershipFee',res);
 		FillDropDownByReference('.ddlMembershipFee_upd',res);
@@ -962,8 +1011,8 @@ function GetAllMembershipType()
 function onGetAllMembershipType(data)
 { 
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference('.ddlMembershipType',res);
 		FillDropDownByReference('.ddlMembershipType_upd',res);
 
@@ -995,8 +1044,8 @@ function GetAllYears()
 function onGetAllYears(data)
 { 
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference('.ddlBusinessStartedYear',res);
 		FillDropDownByReference('.ddlBusinessStartedYear_upd',res);
 		FillDropDownByReference('.ddlPassedYear',res);
@@ -1030,8 +1079,8 @@ function GetAllQualification()
 function onGetAllQualification(data)
 { 
 	try {
-		/*  var res = data;*/
-		var res = data;
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
 		FillDropDownByReference('.ddlQualification',res);
 		FillDropDownByReference('.ddlQualification_upd',res);
 

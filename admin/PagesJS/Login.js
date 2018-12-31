@@ -32,7 +32,7 @@ function Login(Email, Password) {
     });
     request.done(function (data) {
 
-        var res = data;
+        var res = JSON.parse(data);
 
 
         res = res.split('|');

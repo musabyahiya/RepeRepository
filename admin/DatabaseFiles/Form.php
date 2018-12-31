@@ -45,6 +45,7 @@
  	$QualificationId = $data->QualificationId;
  	$Specialization = $data->Specialization;
  	$Institute = $data->Institute;
+ 	$CountryId = $data->CountryId;
  	$PassedYear = $data->PassedYear;
  	$MembershipTypeId = $data->MembershipTypeId;
  	$MembershipFeeId = $data->MembershipFeeId;
@@ -60,14 +61,14 @@
  	{
  		
  		$query = "INSERT INTO members 
- 		( TitleId, FirstName, LastName,FatherName, Gender, Dob, NationalityId, City,DiplomaSessionId, CertificateSessionId, DiplomaYear, CertificateYear , QualificationType , PostalCode, PresentAddress, PermanentAddress, Landline, CellNo, WhatsAppNo, Email, CNIC, Linkdin, Facebook, Website, RealEstate, BusinessStartedYear, Location, AgentDesignation, QualificationId, DeciplineId, Specialization, Institute, PassedYear, MembershipTypeId, MembershipFeeId, JsonWorkInfo, Dealership, WorkArea, FileImage, FileCNIC, CreatedBy, CreatedDate) 
+ 		( TitleId, FirstName, LastName,FatherName, Gender, Dob, NationalityId, City,DiplomaSessionId, CertificateSessionId, DiplomaYear, CertificateYear , QualificationType , PostalCode, PresentAddress, PermanentAddress, Landline, CellNo, WhatsAppNo, Email, CNIC, Linkdin, Facebook, Website, RealEstate, BusinessStartedYear, Location, AgentDesignation, QualificationId, DeciplineId, Specialization, Institute,CountryId, PassedYear, MembershipTypeId, MembershipFeeId, JsonWorkInfo, Dealership, WorkArea, FileImage, FileCNIC, CreatedBy, CreatedDate) 
  		VALUES
 
  		('$TitleId', '$FirstName', '$LastName', '$FatherName', '$Gender', '$Dob', '$NationalityId', 
  		'$City', '$DiplomaSessionId', '$CertificateSessionId', '$DiplomaYear', '$CertificateYear' , '$QualificationType' ,  '$PostalCode', '$PresentAddress', '$PermanentAddress', '$Landline', '$CellNo', 
  		'$WhatsAppNo', '$Email', '$CNIC', '$Linkdin', '$Facebook','$Website', '$RealEstate', $BusinessStartedYear, 
  		'$Location', '$AgentDesignation', '$QualificationId','$DeciplineId', '$Specialization',
- 		'$Institute','$PassedYear', '$MembershipTypeId','$MembershipFeeId',
+ 		'$Institute','$CountryId' ,'$PassedYear', '$MembershipTypeId','$MembershipFeeId',
  		'$JsonWorkInfo','$Dealership','$WorkArea', '$FileImage', '$FileCNIC','$CreatedBy', Now());";
 
  		InsertIntoTableGetIdentity ($con,$query);
@@ -94,7 +95,7 @@
  	try
  	{
  		$query = "SELECT M.MembershipId, M.TitleId, M.FirstName, M.LastName,M.FatherName, M.Gender, M.Dob, 
- 		M.NationalityId,N.Nationality, M.City, M.PostalCode, M.PresentAddress, M.PermanentAddress, M.Landline, M.CellNo, M.WhatsAppNo, M.Email, M.RealEstate, M.BusinessStartedYear, M.Location,M.Website, M.QualificationId,Q.Qualification,M.DeciplineId, M.Specialization, M.Institute, M.PassedYear, MT.MembershipType,M.MembershipTypeId, MF.MembershipFee,M.MembershipFeeId,  M.JsonWorkInfo, M.FileImage, M.FileCNIC,M.IsMember,M.DesignationId,D.Designation,M.StartDate,M.EndDate,M.CNIC,M.Linkdin,M.Dealership,M.WorkArea, M.AgentDesignation,T.Title,M.Facebook,DC.Decipline,M.DeciplineId,DATEDIFF(M.EndDate,Now()),M.ParentDesignationId,PD.ParentDesignation,M.DiplomaYear, M.DiplomaSessionId, M.CertificateYear, M.CertificateSessionId, M.QualificationType
+ 		M.NationalityId,N.Nationality, M.City, M.PostalCode, M.PresentAddress, M.PermanentAddress, M.Landline,M.MembershipNo, M.CellNo, M.WhatsAppNo, M.Email, M.RealEstate, M.BusinessStartedYear, M.Location,M.Website, M.QualificationId,Q.Qualification,M.DeciplineId, M.Specialization, M.Institute, M.PassedYear, MT.MembershipType,M.MembershipTypeId, MF.MembershipFee,M.MembershipFeeId,  M.JsonWorkInfo, M.FileImage, M.FileCNIC,M.IsMember,M.DesignationId,D.Designation,M.StartDate,M.EndDate,M.CNIC,M.Linkdin,M.Dealership,M.WorkArea, M.AgentDesignation,T.Title,M.Facebook,DC.Decipline,M.DeciplineId,DATEDIFF(M.EndDate,Now()),M.ParentDesignationId,PD.ParentDesignation,M.DiplomaYear, M.DiplomaSessionId, M.CertificateYear, M.CertificateSessionId, CS.CertificateSession, DS.DiplomaSession, M.QualificationType, SD.SubDesignation, M.SubDesignationId
 
  		FROM members M 
 
@@ -106,6 +107,9 @@
  		left join title T on T.TitleId = M.TitleId
  		left join decipline DC  on DC.DeciplineId = M.DeciplineId
  		left join parentdesignation PD on PD.ParentDesignationId = M.ParentDesignationId
+ 		left join subdesignation SD on SD.SubDesignationId = M.SubDesignationId
+ 		left join certificatesession CS on CS.CertificateSessionId = M.CertificateSessionId
+ 		left join diplomasession DS on DS.DiplomaSessionId = M.DiplomaSessionId
 
  		where M.IsActive = 1 and M.IsMember = 1 order by M.CreatedDate desc";
  		GetResultJSON($con,$query);
@@ -348,7 +352,7 @@
  if($_GET['action']=='GetAllYears')
 
  {
- 	$query = "SELECT Year as 'Id', Year as 'Value' from years   where  IsActive =1 order by 2 ";
+ 	$query = "SELECT Year as 'Id', Year as 'Value' from years   where  IsActive =1 order by 2 desc ";
 
  	GetResultJSON($con,$query);
  }

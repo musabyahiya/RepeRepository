@@ -3,9 +3,9 @@
 
 session_start();
 $databaseHost = 'localhost';
-$databaseName = 'repa';
-$databaseUsername = 'root';
-$databasePassword = 'root';
+$databaseName = 'wwwrepao_repa';
+$databaseUsername = 'wwwrepao_root';
+$databasePassword = 'musab03432016';
 
 
 try {

@@ -226,6 +226,7 @@
  	$CNIC=$data->CNIC;
  	$Linkdin=$data->Linkdin;
  	$Facebook=$data->Facebook;
+ 	$MembershipNo=$data->MembershipNo;
  	$Website=$data->Website;
  	$RealEstate = $data->RealEstate;
  	$BusinessStartedYear = $data->BusinessStartedYear;
@@ -249,7 +250,7 @@
  	$ModifiedBy  = $_SESSION['UserId'];
 
 
- 	$query = "UPDATE members SET TitleId='$TitleId',FirstName='$FirstName',LastName='$LastName',FatherName='$FatherName',Gender='$Gender',Dob='$Dob',NationalityId='$NationalityId',City='$City', DiplomaSessionId = '$DiplomaSessionId', CertificateSessionId = '$CertificateSessionId', DiplomaYear = '$DiplomaYear', CertificateYear = '$CertificateYear',QualificationType = '$QualificationType',PostalCode='$PostalCode',PresentAddress='$PresentAddress',PermanentAddress='$PermanentAddress',Landline='$Landline',CellNo='$CellNo',WhatsAppNo='$WhatsAppNo',Email='$Email',CNIC='$CNIC',Linkdin='$Linkdin',Facebook='$Facebook',Website='$Website',RealEstate='$RealEstate',BusinessStartedYear='$BusinessStartedYear',Location='$Location',AgentDesignation='$AgentDesignation',WorkArea='$WorkArea',Dealership='$Dealership',QualificationId='$QualificationId',DeciplineId='$DeciplineId',Specialization='$Specialization',Institute='$Institute',PassedYear='$PassedYear',MembershipTypeId='$MembershipTypeId',MembershipFeeId='$MembershipFeeId',DesignationId='$DesignationId',ParentDesignationId='$ParentDesignationId',SubDesignationId='$SubDesignationId',StartDate='$StartDate',EndDate='$EndDate',JsonWorkInfo='$JsonWorkInfo',
+ 	$query = "UPDATE members SET TitleId='$TitleId',FirstName='$FirstName',LastName='$LastName',FatherName='$FatherName',Gender='$Gender',Dob='$Dob',NationalityId='$NationalityId',City='$City', DiplomaSessionId = '$DiplomaSessionId', CertificateSessionId = '$CertificateSessionId', DiplomaYear = '$DiplomaYear', CertificateYear = '$CertificateYear',QualificationType = '$QualificationType',PostalCode='$PostalCode',PresentAddress='$PresentAddress',PermanentAddress='$PermanentAddress',Landline='$Landline',CellNo='$CellNo',WhatsAppNo='$WhatsAppNo',Email='$Email',CNIC='$CNIC',Linkdin='$Linkdin',Facebook='$Facebook', MembershipNo = '$MembershipNo',Website='$Website',RealEstate='$RealEstate',BusinessStartedYear='$BusinessStartedYear',Location='$Location',AgentDesignation='$AgentDesignation',WorkArea='$WorkArea',Dealership='$Dealership',QualificationId='$QualificationId',DeciplineId='$DeciplineId',Specialization='$Specialization',Institute='$Institute',PassedYear='$PassedYear',MembershipTypeId='$MembershipTypeId',MembershipFeeId='$MembershipFeeId',DesignationId='$DesignationId',ParentDesignationId='$ParentDesignationId',SubDesignationId='$SubDesignationId',StartDate='$StartDate',EndDate='$EndDate',JsonWorkInfo='$JsonWorkInfo',
  	ModifiedBy='$ModifiedBy',ModifiedDate=Now() WHERE IsActive = 1 and MembershipId = '$MembershipId'";
 
  	UpdateTable ($con,$query);
@@ -373,7 +374,7 @@
  if($_GET['action']=='GetAllYears')
 
  {
- 	$query = "SELECT Year as 'Id', Year as 'Value' from years  where  IsActive =1 order by Year";
+ 	$query = "SELECT Year as 'Id', Year as 'Value' from years   where  IsActive =1 order by Year desc";
 
  	GetResultJSON($con,$query);
  }

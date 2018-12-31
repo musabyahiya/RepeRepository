@@ -154,7 +154,7 @@
               <div class="col-md-3 AppendLandline ValidateLandline">
                 <div class="form-group">
                   <label for="txtLandline">Landline</label>
-                  &nbsp; <a href="#" style="color:black" onclick="AppendAddLandline(this)"><i class="fas fa-plus-square"></i></a>
+                  &nbsp; <a href="javascript:void(0)" style="color:black" onclick="AppendAddLandline(this)"><i class="fas fa-plus-square"></i></a>
                   <input type="text" class="form-control txtLandline numericOnly" id="txtLandline" placeholder="Enter landline number">
                 </div>
               </div>
@@ -164,7 +164,7 @@
               <div class="col-md-3 AppendCellNo ValidateCellNo">
                 <div class="form-group">
                   <label for="txtCellNo">Cell #</label>
-                  &nbsp; <a href="#" style="color:black" onclick="AppendAddCellNo(this)"><i class="fas fa-plus-square"></i></a>
+                  &nbsp; <a href="javascript:void(0)" style="color:black" onclick="AppendAddCellNo(this)"><i class="fas fa-plus-square"></i></a>
                   <input type="text" class="form-control txtCellNo numericOnly" id="txtCellNo" placeholder="Enter cell no">
                 </div>
               </div>
@@ -193,14 +193,14 @@
             <div class="row">
               <div class="col-md-3">
                 <div class="form-group">
-                  <label for="txtLinkdin">Linkdin</label>
-                  <input type="text" class="form-control txtLinkdin" id="txtLinkdin" placeholder="Enter your linkdin profile url">
+                  <label for="txtLinkdin">Linkedin</label>
+                  <input type="text" class="form-control txtLinkdin notrequired" id="txtLinkdin" placeholder="Enter your linkedin profile url">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="txtFacebook">Facebook</label>
-                  <input type="text" class="form-control txtFacebook" id="txtFacebook" placeholder="Enter your facebook profile url">
+                  <input type="text" class="form-control txtFacebook notrequired" id="txtFacebook" placeholder="Enter your facebook profile url">
                 </div>
               </div>
             </div>
@@ -247,7 +247,7 @@
               <div class="col-md-3 AppendAfterWorkArea ValidateWorkArea">
                 <div class="form-group">
                   <label for="txtWorkArea">Working area</label>
-                  &nbsp; <a href="#" style="color:black" onclick="AppendAddWorkArea(this)"><i class="fas fa-plus-square"></i></a>
+                  &nbsp; <a href="javascript:void(0)" style="color:black" onclick="AppendAddWorkArea(this)"><i class="fas fa-plus-square"></i></a>
                   <input type="text" class="form-control txtWorkArea" id="txtWorkArea" placeholder="Enter work area">
                 </div>
               </div>
@@ -255,7 +255,7 @@
               <div class="col-md-3 AppendAfterDealership ValidateDealership">
                 <div class="form-group">
                   <label for="txtDealership">Authorize Dealership</label>
-                  &nbsp; <a href="#" style="color:black" onclick="AppendAddDealership(this)"><i class="fas fa-plus-square"></i></a>
+                  &nbsp; <a href="javascript:void(0)" style="color:black" onclick="AppendAddDealership(this)"><i class="fas fa-plus-square"></i></a>
                   <input type="text" class="form-control txtDealership" id="txtDealership" placeholder="Enter authorize dealership">
                 </div>
               </div>
@@ -266,20 +266,33 @@
               <h2>Real estate management qualification</h2>
             </div>
                 <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
+                 
+                        <div class="col-lg-4">
+                        <div class="form-group">
                         <label class="radio-inline">
-                          <input type="radio" onclick="QualificationHideShow()" class="radioCertificate" name="optradio" checked>Real Estate Management Certificate
+                          <input type="radio" onclick="QualificationHideShow()" class="radioCertificate" name="optradio" checked>&nbsp;&nbsp;Real Estate Management Certificate
                         </label>
-                        <label class="radio-inline">
-                          <input type="radio" onclick="QualificationHideShow()" class="radioDiploma" name="optradio">Real Estate Management Diploma
-                        </label>
-                        <label class="radio-inline">
-                          <input type="radio" onclick="QualificationHideShow()" class="radioBoth" name="optradio">
-                          Have Both
-                        </label>
+                       
+                        
                       </div>
-                    </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                 <label class="radio-inline">
+                          <input type="radio" onclick="QualificationHideShow()" class="radioDiploma" name="optradio">&nbsp;&nbsp;Real Estate Management Diploma
+                        </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="radio-inline">
+                          <input type="radio" onclick="QualificationHideShow()" class="radioBoth" name="optradio">&nbsp;&nbsp;
+                          Have both
+                        </label>
+                            </div>
+                        </div>
+                  
+                
                   </div>
                   <div class="RowCertificate">
                     <div class="row">
@@ -397,7 +410,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="text">Country</label>
-                  <select class="form-control ddlNationality" >
+                  <select class="form-control ddlCountry" >
                   </select>
                 </div>
               </div>

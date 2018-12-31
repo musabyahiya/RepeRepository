@@ -53,7 +53,7 @@ if($_GET['action']=='GetAllPaymentCurrentMonth')
 	inner join members M on M.MembershipId = N.MembershipId
 	inner join notificationtype NT on NT.NotificationTypeId = N.NotificationTypeId
 	inner join membershipfee MF on  MF.MembershipFeeId = M.MembershipFeeId
-	WHERE  Month(N.CreatedDate) = Month(Now()) and NT.IsActivated = 0 and M.IsActive = 1";
+	WHERE  Month(N.CreatedDate) = Month(Now()) and Year(N.CreatedDate) = Year(Now()) and NT.IsActivated = 0 and M.IsActive = 1";
 
 	GetResultJSON($con,$query);
 
