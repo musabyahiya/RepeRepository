@@ -19,8 +19,8 @@ function GetAllMember() {
 function onGetAllMember(data) {
 	
 	try {
-		var res = JSON.parse(data);
-    // var res = JSON.parse(data);
+		var res = data;
+    // var res = data;
 
     var divTbodyGoalFund = $(".PassOverListing").html("");
     $("#PassOverListing").tmpl(res).appendTo(divTbodyGoalFund);

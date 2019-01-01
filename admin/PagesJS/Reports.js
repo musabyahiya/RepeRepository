@@ -20,7 +20,7 @@ function GetAllReports() {
 function onGetAllReports(data) {
 	
 	try {
-		var res = JSON.parse(data);
+		var res = data;
     // var res = data;
 
     var divTbodyGoalFund = $(".ReportsListing").html("");
@@ -55,7 +55,7 @@ function GetAllMembers() {
 function onGetAllMembers(data) {
 	
 	try {
-		var res = JSON.parse(data);
+		var res = data;
 		MembersList = res;
 		var divTbodyGoalFund = $(".MembersListing").html("");
 		$("#MembersListing").tmpl(res).appendTo(divTbodyGoalFund);

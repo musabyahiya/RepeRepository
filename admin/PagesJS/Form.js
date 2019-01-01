@@ -93,8 +93,8 @@ function GetAllCertificateSession() {
 
 function onGetAllCertificateSession(data) {
 	try {
-		/*  var res = JSON.parse(data);*/
-		var res = JSON.parse(data);
+		/*  var res = data;*/
+		var res = data;
 		FillDropDownByReference(".ddlCertificateSession", res);
 		FillDropDownByReference(".ddlCertificateSession_upd", res);
 	} catch (Err) {
@@ -117,8 +117,8 @@ function GetAllTitle() {
 
 function onGetAllTitle(data) {
 	try {
-		/*  var res = JSON.parse(data);*/
-		var res = JSON.parse(data);
+		/*  var res = data;*/
+		var res = data;
 		FillDropDownByReference(".ddlTitle", res);
 		FillDropDownByReference(".ddlTitle_upd", res);
 	} catch (Err) {
@@ -141,8 +141,8 @@ function GetAllDiplomaSession() {
 
 function onGetAllDiplomaSession(data) {
 	try {
-		/*  var res = JSON.parse(data);*/
-		var res = JSON.parse(data);
+		/*  var res = data;*/
+		var res = data;
 		FillDropDownByReference(".ddlDiplomaSession", res);
 		FillDropDownByReference(".ddlDiplomaSession_upd", res);
 	} catch (Err) {
@@ -176,7 +176,7 @@ function GetAllDesignation()
 	});
 	request.done(function(data) {
 
-		var res = JSON.parse(data);
+		var res = data;
 		DesignationList=res;
 
 	});
@@ -188,7 +188,7 @@ function GetAllDesignation()
 function onGetAllDesignation(data)
 {
 	try {
-		/*  var res = JSON.parse(data);*/
+		/*  var res = data;*/
 		var res = data;
 		
 		FillDropDownByReference('.ddlDesignation',res);
@@ -224,8 +224,8 @@ function GetAllParentDesignation()
 function onGetAllParentDesignation(data)
 { 
 	try {
-		/*  var res = JSON.parse(data);*/
-		var res = JSON.parse(data);
+		/*  var res = data;*/
+		var res = data;
 		FillDropDownByReference('.ddlParentDesignation',res);
 		FillDropDownByReference('.ddlParentDesignation_upd',res);
 
@@ -410,8 +410,8 @@ function GetAllDecipline() {
 
 function onGetAllDecipline(data) {
 	try {
-		/*  var res = JSON.parse(data);*/
-		var res = JSON.parse(data);
+		/*  var res = data;*/
+		var res = data;
 		FillDropDownByReference(".ddlDecipline", res);
 		FillDropDownByReference(".ddlDecipline_upd", res);
 	} catch (Err) {
@@ -532,7 +532,7 @@ function GetAllMember()
 {
 	try 
 	{
-		var res = JSON.parse(data);
+		var res = data;
 		var totalExperience = 0;
 
 		$.each(JSON.parse(res[0].JsonWorkInfo), function () {
@@ -646,8 +646,8 @@ function onGetAllMember(data)
 {  
 	try 
 	{
-		var res = JSON.parse(data);
-       // var res = JSON.parse(data);
+		var res = data;
+       // var res = data;
 
        var divTbodyGoalFund = $('.MemberListing').html('');
        $('#MemberListing').tmpl(res).appendTo(divTbodyGoalFund);
@@ -674,7 +674,7 @@ function CreateNewMember()
 	});
 	request.done(function(data) {
 
-		var res = JSON.parse(data);
+		var res = data;
 		if( data>0)
 		{	
 			showSuccess('Successfully Created!');
@@ -903,8 +903,8 @@ function GetAllNationality()
 function onGetAllNationality(data)
 { 
 	try {
-		/*  var res = JSON.parse(data);*/
-		var res = JSON.parse(data);
+		/*  var res = data;*/
+		var res = data;
 		FillDropDownByReference('.ddlNationality',res);
 		FillDropDownByReference('.ddlNationality_upd',res);
 
@@ -940,8 +940,8 @@ function GetAllCountry()
 function onGetAllCountry(data)
 { 
 	try {
-		/*  var res = JSON.parse(data);*/
-		var res = JSON.parse(data);
+		/*  var res = data;*/
+		var res = data;
 		FillDropDownByReference('.ddlCountry',res);
 		FillDropDownByReference('.ddlCountry_upd',res);
 
@@ -962,7 +962,7 @@ function GetAllMembershipFee()
 	});
 	request.done(function(data) {
 
-		var res = JSON.parse(data);
+		var res = data;
 		MembershipFeeList = res;
 		
 	});
@@ -975,7 +975,7 @@ function GetAllMembershipFee()
 function onGetAllMembershipFee(data)
 {
 	try {
-		/*  var res = JSON.parse(data);*/
+		/*  var res = data;*/
 		var res = (data);
 		FillDropDownByReference('.ddlMembershipFee',res);
 		FillDropDownByReference('.ddlMembershipFee_upd',res);
@@ -1011,8 +1011,8 @@ function GetAllMembershipType()
 function onGetAllMembershipType(data)
 { 
 	try {
-		/*  var res = JSON.parse(data);*/
-		var res = JSON.parse(data);
+		/*  var res = data;*/
+		var res = data;
 		FillDropDownByReference('.ddlMembershipType',res);
 		FillDropDownByReference('.ddlMembershipType_upd',res);
 
@@ -1044,8 +1044,8 @@ function GetAllYears()
 function onGetAllYears(data)
 { 
 	try {
-		/*  var res = JSON.parse(data);*/
-		var res = JSON.parse(data);
+		/*  var res = data;*/
+		var res = data;
 		FillDropDownByReference('.ddlBusinessStartedYear',res);
 		FillDropDownByReference('.ddlBusinessStartedYear_upd',res);
 		FillDropDownByReference('.ddlPassedYear',res);
@@ -1079,8 +1079,8 @@ function GetAllQualification()
 function onGetAllQualification(data)
 { 
 	try {
-		/*  var res = JSON.parse(data);*/
-		var res = JSON.parse(data);
+		/*  var res = data;*/
+		var res = data;
 		FillDropDownByReference('.ddlQualification',res);
 		FillDropDownByReference('.ddlQualification_upd',res);
 
