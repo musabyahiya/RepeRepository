@@ -4,6 +4,7 @@ GetAllCertificateSession();
 GetAllDecipline();
 GetAllSubDesignation();
 GetAllYears();
+GetAllCountry();
 GetAllTitle();
 GetAllNotificationType();
 GetAllDesignation();
@@ -66,6 +67,7 @@ var Members = [
 	QualificationId: 0,
 	Specialization: null,
 	Institute: null,
+	CountryId : 0,
 	PassedYear: 0,
 	MembershipTypeId: 0,
 	MembershipFeeId: 0,
@@ -124,10 +126,6 @@ function AllClickFunction() {
 	$(".btnSaveChanges").click(function() {
 
 		MembershipValidation();
-		$(".txtPermanentAddress").val("N/A");
-		$(".txtWhatsAppNo").val("N/A");
-		$(".txtLandline").val("N/A");
-		
 
 		if (!validateForm(".FrmMembership")) return;
 
@@ -171,6 +169,7 @@ function AllClickFunction() {
 		Members[0].QualificationId = $(".ddlQualification").val();
 		Members[0].Specialization = $(".txtSpecialization").val();
 		Members[0].Institute = $(".txtInstitute").val();
+		Members[0].CountryId = $(".ddlCountry").val();
 		Members[0].PassedYear = $(".ddlPassedYear").val();
 		Members[0].MembershipTypeId = $(".ddlMembershipType").val();
 		Members[0].MembershipFeeId = $(".ddlMembershipFee").val();
@@ -238,6 +237,7 @@ function AllClickFunction() {
 		Members[0].QualificationId = $(".ddlQualification_upd").val();
 		Members[0].Specialization = $(".txtSpecialization_upd").val();
 		Members[0].Institute = $(".txtInstitute_upd").val();
+		Members[0].CountryId = $(".ddlCountry_upd").val();
 		Members[0].PassedYear = $(".ddlPassedYear_upd").val();
 		Members[0].MembershipTypeId = $(".ddlMembershipType_upd").val();
 		Members[0].MembershipFeeId = $(".ddlMembershipFee_upd").val();
@@ -418,6 +418,7 @@ function editMembership(selector) {
 	$(".ddlDecipline_upd").val(objEditRow.find(".hdnDeciplineId").val());
 	$(".txtSpecialization_upd").val(objEditRow.find(".tdSpecialization").text().trim());
 	$(".txtInstitute_upd").val(objEditRow.find(".tdInstitute").text().trim());
+	$(".ddlCountry_upd").val(objEditRow.find(".hdnCountryId").val());
 	$(".ddlPassedYear_upd").val(objEditRow.find(".tdPassedYear").text().trim());
 	$(".ddlMembershipType_upd").val(objEditRow.find(".hdnMembershipTypeId").val()).change();
 	$(".ddlMembershipFee_upd").val(objEditRow.find(".hdnMembershipFeeId").val());
@@ -524,14 +525,14 @@ function BindProfile(selector)
 		BindTextToSelector('.tdFacebookPrint', objEditRow.find('.hdnFacebook').val());
 		BindTextToSelector('.tdAgencyNamePrint', objEditRow.find('.tdRealEstate').text());
 		BindTextToSelector('.tdWebsitePrint', objEditRow.find('.hdnWebsite').val());
-		BindTextToSelector('.tdAgentDesignationPrint', objEditRow.find('.tdRealEstate').text());
+		BindTextToSelector('.tdAgentDesignationPrint', objEditRow.find('.tdAgentDesignation').text());
 		BindTextToSelector('.tdAssociatedsincePrint', objEditRow.find('.tdBusinessStartedYear').text());
 		BindTextToSelector('.tdAgencylocationPrint', objEditRow.find('.tdLocation').text());
 		BindTextToSelector('.tdWorkingAreaPrint', htmlComma(objEditRow.find('.hdnWorkArea').val(),'WorkArea'));
 		BindTextToSelector('.tdDealershipPrint', htmlComma(objEditRow.find('.hdnDealership').val(),'Dealership'));
 		BindTextToSelector('.tdCertificateCoursePrint', objEditRow.find('.hdnQualificationType').val() != 1  ? 'N/A' :  objEditRow.find('.hdnCertificateSession').val() +' | '+objEditRow.find('.hdnCertificateYear').val());
 		BindTextToSelector('.tdDiplomaCoursePrint', objEditRow.find('.hdnQualificationType').val() != 2 ? 'N/A' :  objEditRow.find('.hdnDiplomaSession').val() +' | '+objEditRow.find('.hdnDiplomaYear').val());
-	
+	    BindTextToSelector('.tdTenurePrint', objEditRow.find('.hdnStartDate').val()+' to '+ objEditRow.find('.hdnEndDate').val());
 	    if(objEditRow.find('.hdnQualificationType').val()==3)
 	    {
 	        	BindTextToSelector('.tdCertificateCoursePrint', objEditRow.find('.hdnCertificateSession').val() +' | '+objEditRow.find('.hdnCertificateYear').val());
@@ -577,7 +578,7 @@ function htmlComma( Json,Key)
 		index++;
 	});
 
-	return b.slice(0,-2);
+	return b.slice(0,-3);
 }
 
 function CreateNewMember() {
@@ -598,6 +599,43 @@ function CreateNewMember() {
 	});
 }
 
+
+function GetAllCountry()
+{
+	
+	var request = $.ajax({
+		method: "POST",
+		url:    "../DatabaseFiles/Members.php?action=GetAllCountry",
+		data: {}
+	});
+	request.done(function(data) {
+
+		onGetAllCountry(data);
+		
+		
+	});
+	request.fail(function(jqXHR, textStatus) {
+		console.log(textStatus);
+
+	});
+}
+
+
+
+function onGetAllCountry(data)
+{ 
+	try {
+		/*  var res = JSON.parse(data);*/
+		var res = JSON.parse(data);
+		FillDropDownByReference('.ddlCountry',res);
+		FillDropDownByReference('.ddlCountry_upd',res);
+
+	}
+
+	catch (Err) {
+		console.log(Err);
+	}
+}
 function DisableDonarsControl() {
 	$(".ddlDonarAmount").val(0);
 	$(".ddlDonarAmount").prop("disabled", true);
