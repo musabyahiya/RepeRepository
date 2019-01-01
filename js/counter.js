@@ -3,6 +3,10 @@
 		options = options || {};
 		
 		return $(this).each(function () {
+<<<<<<< HEAD
+
+=======
+>>>>>>> Repa Changes after ashraf meeting print is still not tested. 31 dec
 			// set options for current element
 			var settings = $.extend({}, $.fn.countTo.defaults, {
 				from:            $(this).data('from'),

@@ -46,6 +46,10 @@ var Members = [
 	DiplomaYear: null,
 	CertificateYear: null,
 	QualificationType : 0,
+	DiplomaInstitute : null,
+	CertificateInstitute : null,
+	DiplomaCertificationBody : null,
+	CertificateCertificationBody : null,
 	PostalCode: 0,
 	PresentAddress: null,
 	PermanentAddress: null,
@@ -147,6 +151,11 @@ function AllClickFunction() {
   		$('.radioDiploma').prop('checked') == true ? 2 : // else if
   		$('.radioBoth').prop('checked') == true ? 3 : // else if
   		0); 
+		
+		Members[0].DiplomaInstitute = $(".txtDiplomaInstitute").val();
+		Members[0].CertificateInstitute = $(".txtCertificateInstitute").val();
+		Members[0].DiplomaCertificationBody = $(".txtDiplomaCertificationBody").val();
+		Members[0].CertificateCertificationBody = $(".txtCertificateCertificationBody").val();
 		Members[0].PostalCode = $(".txtPostalCode").val();
 		Members[0].PresentAddress = $(".txtPresentAddress").val();
 		Members[0].PermanentAddress = $(".txtPermanentAddress").val();
@@ -190,7 +199,7 @@ function AllClickFunction() {
 			return;
 		}
 		CreateNewMember();
-});
+	});
 
 	$(".btnUpdateChanges").click(function() {
 		MembershipValidation_upd();
@@ -215,6 +224,10 @@ function AllClickFunction() {
   		$('.radioDiploma_upd').prop('checked') == true ? 2 : // else if
   		$('.radioBoth_upd').prop('checked') == true ? 3 : // else if
   		0); 
+		Members[0].DiplomaInstitute = $(".txtDiplomaInstitute_upd").val();
+		Members[0].CertificateInstitute = $(".txtCertificateInstitute_upd").val();
+		Members[0].DiplomaCertificationBody = $(".txtDiplomaCertificationBody_upd").val();
+		Members[0].CertificateCertificationBody = $(".txtCertificateCertificationBody_upd").val();
 		Members[0].PostalCode = $(".txtPostalCode_upd").val();
 		Members[0].PresentAddress = $(".txtPresentAddress_upd").val();
 		Members[0].PermanentAddress = $(".txtPermanentAddress_upd").val();
@@ -250,7 +263,7 @@ function AllClickFunction() {
 		Members[0].IsMember = 0;
 		Members[0].MembershipNo = $(".txtMembershipNo_upd").val();
 
-		UpdateNewMember();
+		//UpdateNewMember();
 	});
 }
 
@@ -274,20 +287,20 @@ function UpdateNewMember() {
 }
 
 function InitEditControls(Action) {
-    if(Action=='Retrieve')
-    {
-        $('.ValidateWorkInfo_upd').remove();
-        $('.ValidateWorkArea_upd').remove();
-        $('.ValidateDealership_upd').remove();
-        $('.ValidateCellNo_upd').remove();
-        $('.ValidateLandline_upd').remove();
-    }
-    workinfo = [];
+	if(Action=='Retrieve')
+	{
+		$('.ValidateWorkInfo_upd').remove();
+		$('.ValidateWorkArea_upd').remove();
+		$('.ValidateDealership_upd').remove();
+		$('.ValidateCellNo_upd').remove();
+		$('.ValidateLandline_upd').remove();
+	}
+	workinfo = [];
 	workarea = [];
 	dealership = [];
 	cellno = [];
 	landline = [];
-    
+
 	
 }
 
@@ -434,11 +447,15 @@ function editMembership(selector) {
   		{
   			$(".ddlCertificateSession_upd").val(objEditRow.find(".hdnCertificateSessionId").val());
   			$(".ddlCertificateYear_upd").val(objEditRow.find(".hdnCertificateYear").val());
+  			$(".txtCertificationInstitute_upd").val(objEditRow.find(".hdnCertificationInstitute").val());
+  			$(".txtCertificateCertificationBody_upd").val(objEditRow.find(".hdnCertificateCertificationBody").val());
   		}
   		else if(rd=="2")
   		{
   			$(".ddlDiplomaSession_upd").val(objEditRow.find(".hdnDiplomaSessionId").val());
   			$(".ddlDiplomaYear_upd").val(objEditRow.find(".hdnDiplomaYear").val());
+  			$(".txtDiplomaInstitute_upd").val(objEditRow.find(".hdnDiplomaInstitute").val());
+  			$(".txtDiplomaCertificationBody_upd").val(objEditRow.find(".hdnDiplomaCertificationBody").val());
   		}
   		else
   		{
@@ -446,6 +463,11 @@ function editMembership(selector) {
   			$(".ddlCertificateYear_upd").val(objEditRow.find(".hdnCertificateYear").val());
   			$(".ddlDiplomaSession_upd").val(objEditRow.find(".hdnDiplomaSessionId").val());
   			$(".ddlDiplomaYear_upd").val(objEditRow.find(".hdnDiplomaYear").val());
+  			$(".txtCertificationInstitute_upd").val(objEditRow.find(".hdnCertificationInstitute").val());
+  			$(".txtCertificateCertificationBody_upd").val(objEditRow.find(".hdnCertificateCertificationBody").val());
+  			$(".txtDiplomaInstitute_upd").val(objEditRow.find(".hdnDiplomaInstitute").val());
+  			$(".txtDiplomaCertificationBody_upd").val(objEditRow.find(".hdnDiplomaCertificationBody").val());
+  
 
   		}
 
@@ -519,7 +541,7 @@ function BindProfile(selector)
 		BindTextToSelector('.tdEmailPrint', objEditRow.find('.tdEmail').text());
 		BindTextToSelector('.tdBusinessStartedYear', objEditRow.find('.hdnBusinessStartedYear').val());
 		BindTextToSelector('.tdExperience', parseInt(totalExperience)+' yrs');
-		BindTextToSelector('.tdCellNo', htmlComma(objEditRow.find('.hdnCellNo').val(),'CellNo'));
+		
 		BindTextToSelector('.tdEmail', objEditRow.find('.hdnEmail').val());
 		BindTextToSelector('.tdLinkedinPrint', objEditRow.find('.hdnLinkedin').val());
 		BindTextToSelector('.tdFacebookPrint', objEditRow.find('.hdnFacebook').val());
@@ -532,13 +554,13 @@ function BindProfile(selector)
 		BindTextToSelector('.tdDealershipPrint', htmlComma(objEditRow.find('.hdnDealership').val(),'Dealership'));
 		BindTextToSelector('.tdCertificateCoursePrint', objEditRow.find('.hdnQualificationType').val() != 1  ? 'N/A' :  objEditRow.find('.hdnCertificateSession').val() +' | '+objEditRow.find('.hdnCertificateYear').val());
 		BindTextToSelector('.tdDiplomaCoursePrint', objEditRow.find('.hdnQualificationType').val() != 2 ? 'N/A' :  objEditRow.find('.hdnDiplomaSession').val() +' | '+objEditRow.find('.hdnDiplomaYear').val());
-	    BindTextToSelector('.tdTenurePrint', objEditRow.find('.hdnStartDate').val()+' to '+ objEditRow.find('.hdnEndDate').val());
-	    if(objEditRow.find('.hdnQualificationType').val()==3)
-	    {
-	        	BindTextToSelector('.tdCertificateCoursePrint', objEditRow.find('.hdnCertificateSession').val() +' | '+objEditRow.find('.hdnCertificateYear').val());
-	        	BindTextToSelector('.tdDiplomaCoursePrint',   objEditRow.find('.hdnDiplomaSession').val() +' | '+objEditRow.find('.hdnDiplomaYear').val());
-	
-	    }
+		BindTextToSelector('.tdTenurePrint', objEditRow.find('.hdnStartDate').val()+' to '+ objEditRow.find('.hdnEndDate').val());
+		if(objEditRow.find('.hdnQualificationType').val()==3)
+		{
+			BindTextToSelector('.tdCertificateCoursePrint', objEditRow.find('.hdnCertificateSession').val() +' | '+objEditRow.find('.hdnCertificateYear').val());
+			BindTextToSelector('.tdDiplomaCoursePrint',   objEditRow.find('.hdnDiplomaSession').val() +' | '+objEditRow.find('.hdnDiplomaYear').val());
+
+		}
 		BindTextToSelector('.tdParentDesignationPrint', objEditRow.find('.hdnParentDesignation').val());
 		BindTextToSelector('.tdMembershipNoPrint', objEditRow.find('.hdnMembershipNo').val());
 		BindTextToSelector('.tdMembershipTypePrint', objEditRow.find('.tdMembershipType').text());
@@ -1758,11 +1780,15 @@ function MembershipValidation() {
 	{
 		$('.ddlCertificateSession').addClass("notrequired");
 		$('.ddlCertificateYear').addClass("notrequired");
+		$('.txtCertificateInstitute').addClass("notrequired");
+		$('.txtCertificateCertificationBody').addClass("notrequired");
 	}
 	else if($('.radioCertificate').prop('checked')==true)
 	{
 		$('.ddlDiplomaSession').addClass("notrequired");
 		$('.ddlDiplomaYear').addClass("notrequired");
+		$(".txtDiplomaInstitute").addClass("notrequired");
+		$(".txtDiplomaCertificationBody").addClass("notrequired");
 	}
 	if($('.ddlParentDesignation').val()==1)
 	{
@@ -1779,11 +1805,17 @@ function MembershipValidation_upd() {
 	{
 		$('.ddlCertificateSession_upd').addClass("notrequired");
 		$('.ddlCertificateYear_upd').addClass("notrequired");
+		$('.txtCertificateInstitute_upd').addClass("notrequired");
+		$('.txtCertificateCertificationBody_upd').addClass("notrequired");
+
+
 	}
 	else if($('.radioCertificate_upd').prop('checked')==true)
 	{
 		$('.ddlDiplomaSession_upd').addClass("notrequired");
 		$('.ddlDiplomaYear_upd').addClass("notrequired");
+		$(".txtDiplomaInstitute_upd").addClass("notrequired");
+		$(".txtDiplomaCertificationBody_upd").addClass("notrequired");
 	}
 	if($('.ddlParentDesignation_upd').val()==1)
 	{

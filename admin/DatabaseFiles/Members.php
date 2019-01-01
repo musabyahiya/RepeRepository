@@ -23,6 +23,10 @@
  	$DiplomaYear = $data->DiplomaYear;
  	$CertificateYear = $data->CertificateYear;
  	$QualificationType = $data->QualificationType;
+ 	$DiplomaInstitute = $data->DiplomaInstitute;
+ 	$CertificateInstitute = $data->CertificateInstitute;
+ 	$DiplomaCertificationBody = $data->DiplomaCertificationBody;
+ 	$CertificateCertificationBody = $data->CertificateCertificationBody;
  	$PostalCode = $data->PostalCode;
  	$PresentAddress = $data->PresentAddress;
  	$PermanentAddress = $data->PermanentAddress;
@@ -63,11 +67,11 @@
  	try
  	{
  		
- 		$query = "INSERT INTO members( TitleId, FirstName, LastName, Gender, Dob, NationalityId, City, DiplomaSessionId, CertificateSessionId, FatherName, DiplomaYear, CertificateYear, QualificationType ,PostalCode, PresentAddress, PermanentAddress, Landline, CellNo, WhatsAppNo, Email, CNIC, RealEstate, DeciplineId, BusinessStartedYear, Location, AgentDesignation, WorkArea, Dealership, Linkdin, Facebook, Website, QualificationId, Specialization, Institute, CountryId, PassedYear, MembershipTypeId, MembershipFeeId, DesignationId, StartDate, EndDate, JsonWorkInfo, FileImage, FileCNIC, IsMember, MembershipNo, ParentDesignationId, SubDesignationId, CreatedBy, CreatedDate) 
+ 		$query = "INSERT INTO members( TitleId, FirstName, LastName, Gender, Dob, NationalityId, City, DiplomaSessionId, CertificateSessionId, FatherName, DiplomaYear, CertificateYear, QualificationType ,PostalCode, DiplomaInstitute, CertificateInstitute, DiplomaCertificationBody, CertificateCertificationBody, PresentAddress, PermanentAddress, Landline, CellNo, WhatsAppNo, Email, CNIC, RealEstate, DeciplineId, BusinessStartedYear, Location, AgentDesignation, WorkArea, Dealership, Linkdin, Facebook, Website, QualificationId, Specialization, Institute, CountryId, PassedYear, MembershipTypeId, MembershipFeeId, DesignationId, StartDate, EndDate, JsonWorkInfo, FileImage, FileCNIC, IsMember, MembershipNo, ParentDesignationId, SubDesignationId, CreatedBy, CreatedDate) 
  		VALUES 
  		(   '$TitleId', '$FirstName', '$LastName', '$Gender', '$Dob', '$NationalityId', '$City', 
  		'$DiplomaSessionId', '$CertificateSessionId', '$FatherName', '$DiplomaYear', '$CertificateYear',
- 		'$QualificationType','$PostalCode', '$PresentAddress', '$PermanentAddress', '$Landline',
+ 		'$QualificationType','$PostalCode','$DiplomaInstitute', '$CertificateInstitute', '$DiplomaCertificationBody', '$CertificateCertificationBody', '$PresentAddress', '$PermanentAddress', '$Landline',
  		'$CellNo', '$WhatsAppNo', '$Email', '$CNIC', '$RealEstate', '$DeciplineId', 
  		'$BusinessStartedYear', '$Location', '$AgentDesignation', '$WorkArea', '$Dealership', 
  		'$Linkdin', '$Facebook', '$Website', '$QualificationId', '$Specialization', '$Institute', '$CountryId',
@@ -106,7 +110,8 @@
  		M.Dealership,M.WorkArea, M.AgentDesignation,T.Title,M.Facebook,DC.Decipline,M.DeciplineId,DATEDIFF(M.EndDate,Now()),
  		M.ParentDesignationId,PD.ParentDesignation,M.DiplomaYear, M.DiplomaSessionId, M.CertificateYear, 
  		M.CertificateSessionId, M.QualificationType, PD.ParentDesignation, M.ParentDesignationId, 
- 		M.SubDesignationId, CS.CertificateSession, DS.DiplomaSession, SD.SubDesignation, M.MembershipNo, M.CountryId
+ 		M.SubDesignationId, CS.CertificateSession, DS.DiplomaSession, SD.SubDesignation, M.MembershipNo, M.CountryId, M.DiplomaInstitute, M.CertificateInstitute, M.DiplomaCertificationBody, 
+ 		M.CertificateCertificationBody
 
  		FROM members M 
 
@@ -224,6 +229,10 @@
  	$DiplomaYear = $data->DiplomaYear;
  	$CertificateYear = $data->CertificateYear;
  	$QualificationType = $data->QualificationType;
+ 	$DiplomaInstitute = $data->DiplomaInstitute;
+ 	$CertificateInstitute = $data->CertificateInstitute;
+ 	$DiplomaCertificationBody = $data->DiplomaCertificationBody;
+ 	$CertificateCertificationBody = $data->CertificateCertificationBody;
  	$PostalCode = $data->PostalCode;
  	$PresentAddress = $data->PresentAddress;
  	$PermanentAddress = $data->PermanentAddress;
@@ -259,7 +268,7 @@
  	$ModifiedBy  = $_SESSION['UserId'];
 
 
- 	$query = "UPDATE members SET TitleId='$TitleId',FirstName='$FirstName',LastName='$LastName',FatherName='$FatherName',Gender='$Gender',Dob='$Dob',NationalityId='$NationalityId',City='$City', DiplomaSessionId = '$DiplomaSessionId', CertificateSessionId = '$CertificateSessionId', DiplomaYear = '$DiplomaYear', CertificateYear = '$CertificateYear',QualificationType = '$QualificationType',PostalCode='$PostalCode',PresentAddress='$PresentAddress',PermanentAddress='$PermanentAddress',Landline='$Landline',CellNo='$CellNo',WhatsAppNo='$WhatsAppNo',Email='$Email',CNIC='$CNIC',Linkdin='$Linkdin',Facebook='$Facebook', MembershipNo = '$MembershipNo',Website='$Website',RealEstate='$RealEstate',BusinessStartedYear='$BusinessStartedYear',Location='$Location',AgentDesignation='$AgentDesignation',WorkArea='$WorkArea',Dealership='$Dealership',QualificationId='$QualificationId',DeciplineId='$DeciplineId',Specialization='$Specialization',Institute='$Institute', CountryId = '$CountryId', PassedYear='$PassedYear',MembershipTypeId='$MembershipTypeId',MembershipFeeId='$MembershipFeeId',DesignationId='$DesignationId',ParentDesignationId='$ParentDesignationId',SubDesignationId='$SubDesignationId',StartDate='$StartDate',EndDate='$EndDate',JsonWorkInfo='$JsonWorkInfo',
+ 	$query = "UPDATE members SET TitleId='$TitleId',FirstName='$FirstName',LastName='$LastName',FatherName='$FatherName',Gender='$Gender',Dob='$Dob',NationalityId='$NationalityId',City='$City', DiplomaSessionId = '$DiplomaSessionId', CertificateSessionId = '$CertificateSessionId', DiplomaYear = '$DiplomaYear', CertificateYear = '$CertificateYear',QualificationType = '$QualificationType',DiplomaInstitute = '$DiplomaInstitute',CertificateInstitute = '$CertificateInstitute',DiplomaCertificationBody = '$DiplomaCertificationBody',CertificateCertificationBody = '$CertificateCertificationBody',PostalCode='$PostalCode',PresentAddress='$PresentAddress',PermanentAddress='$PermanentAddress',Landline='$Landline',CellNo='$CellNo',WhatsAppNo='$WhatsAppNo',Email='$Email',CNIC='$CNIC',Linkdin='$Linkdin',Facebook='$Facebook', MembershipNo = '$MembershipNo',Website='$Website',RealEstate='$RealEstate',BusinessStartedYear='$BusinessStartedYear',Location='$Location',AgentDesignation='$AgentDesignation',WorkArea='$WorkArea',Dealership='$Dealership',QualificationId='$QualificationId',DeciplineId='$DeciplineId',Specialization='$Specialization',Institute='$Institute', CountryId = '$CountryId', PassedYear='$PassedYear',MembershipTypeId='$MembershipTypeId',MembershipFeeId='$MembershipFeeId',DesignationId='$DesignationId',ParentDesignationId='$ParentDesignationId',SubDesignationId='$SubDesignationId',StartDate='$StartDate',EndDate='$EndDate',JsonWorkInfo='$JsonWorkInfo',
  	ModifiedBy='$ModifiedBy',ModifiedDate=Now() WHERE IsActive = 1 and MembershipId = '$MembershipId'";
 
  	UpdateTable ($con,$query);

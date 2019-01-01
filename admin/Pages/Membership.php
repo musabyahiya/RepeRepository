@@ -350,13 +350,13 @@ if(!isset($_SESSION['UserId'])){
 										</div>
 									</div>
 									<div class="row RowCertificate">
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group">
 												<label for="ddlCertificateSession">Certificate course session</label>
 												<select class="form-control ddlCertificateSession"></select>
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group">
 												<label for="ddlCertificateYear">Certificate course year</label>
 												<select class="form-control ddlCertificateYear"> 
@@ -385,15 +385,28 @@ if(!isset($_SESSION['UserId'])){
 
 											</div>
 										</div>
+
+										<div class="col-lg-3"> 
+											<div class="form-group">
+												<label for="txtCertificateInstitute">Course conductor/Institute</label>
+												<input type="text" placeholder="Enter course conductor/institute" class="form-control txtCertificateInstitute"/>
+											</div>
+										</div>
+										<div class="col-lg-3"> 
+											<div class="form-group">
+												<label for="txtCertificateCertificationBody">Certification body</label>
+												<input type="text" placeholder="Enter course conductor/institute" class="form-control txtCertificateCertificationBody"/>
+											</div>
+										</div>
 									</div>
 									<div class="row RowDiploma">
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group">
 												<label for="ddlDiplomaSession">Diploma course session</label>
 												<select class="form-control ddlDiplomaSession"></select>
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group">
 												<label for="ddlDiplomaYear">Diploma course year</label>
 												<select class="form-control ddlDiplomaYear">
@@ -418,6 +431,18 @@ if(!isset($_SESSION['UserId'])){
 													<option value="2017">2017</option>
 													<option value="2018">2018</option>
 												</select>
+											</div>
+										</div>
+										<div class="col-lg-3"> 
+											<div class="form-group">
+												<label for="txtDiplomaInstitute">Course conductor/Institute</label>
+												<input type="text" placeholder="Enter course conductor/institute" class="form-control txtDiplomaInstitute"/>
+											</div>
+										</div>
+										<div class="col-lg-3"> 
+											<div class="form-group">
+												<label for="txtDiplomaCertificationBody">Diploma certification body</label>
+												<input type="text" placeholder="Enter course conductor/institute" class="form-control txtDiplomaCertificationBody"/>
 											</div>
 										</div>
 									</div>
@@ -849,13 +874,13 @@ if(!isset($_SESSION['UserId'])){
 										</div>
 									</div>
 									<div class="row RowCertificate_upd">
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group">
 												<label for="ddlCertificateSession_upd">Certificate course session</label>
 												<select class="form-control ddlCertificateSession_upd"></select>
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group">
 												<label for="ddlCertificateYear_upd">Certificate course year</label>
 												<select class="form-control ddlCertificateYear_upd"> 
@@ -879,20 +904,32 @@ if(!isset($_SESSION['UserId'])){
 													<option value="2016">2016</option>
 													<option value="2017">2017</option>
 													<option value="2018">2018</option>
-
 												</select>
 
 											</div>
 										</div>
+										<div class="col-lg-3"> 
+											<div class="form-group">
+												<label for="txtCertificationInstitute_upd">Course conductor/Institute</label>
+												<input type="text" placeholder="Enter course conductor/institute" class="form-control txtCertificateInstitute_upd"/>
+											</div>
+										</div>
+										<div class="col-lg-3"> 
+											<div class="form-group">
+												<label for="CertificateCertificationBody_upd"> Certification body</label>
+												<input type="text" placeholder="Enter course conductor/institute" class="form-control txtCertificateCertificationBody_upd"/>
+											</div>
+										</div>
+
 									</div>
 									<div class="row RowDiploma_upd">
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group">
 												<label for="ddlDiplomaSession_upd">Diploma course session</label>
 												<select class="form-control ddlDiplomaSession_upd"></select>
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-3">
 											<div class="form-group">
 												<label for="ddlDiplomaYear_upd">Diploma course year</label>
 												<select class="form-control ddlDiplomaYear_upd">
@@ -917,6 +954,18 @@ if(!isset($_SESSION['UserId'])){
 													<option value="2017">2017</option>
 													<option value="2018">2018</option>
 												</select>
+											</div>
+										</div>
+										<div class="col-lg-3"> 
+											<div class="form-group">
+												<label for="txtDiplomaInstitute_upd">Course conductor/Institute</label>
+												<input type="text" placeholder="Enter course conductor/institute" class="form-control txtDiplomaInstitute_upd"/>
+											</div>
+										</div>
+										<div class="col-lg-3"> 
+											<div class="form-group">
+												<label for="txtDiplomaDiplomaBody_upd">Diploma certification body</label>
+												<input type="text" placeholder="Enter course conductor/institute" class="form-control txtDiplomaCertificationBody_upd"/>
 											</div>
 										</div>
 									</div>
@@ -1013,14 +1062,14 @@ if(!isset($_SESSION['UserId'])){
 
 										<div class="col-md-3">
 											<div class="form-group">
-												<label for="ddlParentDesignation_upd">Management Comit</label>
+												<label for="ddlParentDesignation_upd">Management Committee</label>
 												<select class="form-control ddlParentDesignation_upd">
 												</select>
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label for="ddlDesignation_upd">Sub Comity</label>
+												<label for="ddlDesignation_upd">Sub Committee</label>
 												<select class="form-control ddlDesignation_upd">
 												</select>
 											</div>
@@ -1118,246 +1167,246 @@ if(!isset($_SESSION['UserId'])){
 						<!--<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Modal Header</h4>
-						</div>-->
-						<div class="modal-body">
-							<div id="Print">
-								<table style ="width: 100%; height: 100%; color: black;
-								font-family:'open sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;">
-								<thead>	
-									<tr class="trPrint" style="background-color: #c8560f;line-height: 1.8;color: white;">
-										<td colspan="3" style="font-weight: 800;font-size:18px">&nbsp;Member's Profile</td>
-											
-									</tr>
-		
-							
-									<tr style="height:145px">
-										<td>
-											<img height="130px;" class="tdProfilePicPrint" width="130px;" alt="User Pic" src=""  style=""> 
-										</td>
-										<td><label>Membership # </label>
-											<br>
-											<label>Membership Type  </label>
-											<br>
-											<label class="tdParentDesignationPrint"> </label>
-											<br>
-											<label>Tenure</label>
-										</td>
-
-										<td align="right">
-
-											<label style="background: #c8560f;color: #fff;padding: 2px;margin: -3px;border-radius: 4px;" class="tdMembershipNoPrint"></label>
-											<br>
-
-											<label class="tdMembershipTypePrint" style="background: #c8560f;color: #fff;padding: 2px;margin: -3px;border-radius: 4px;"></label>
-											<br>
-
-											<label class="tdSubDesignationPrint" style="background: #c8560f;color: #fff;padding: 2px;margin: -3px;border-radius: 4px;"></label>
-											<br>
-
-											<label class="tdTenurePrint" style="background: #c8560f;color: #fff;padding: 2px;margin: 0px;border-radius: 4px;"></label>
-										</td>
-									</tr>
-						        	</thead>
-								<tbody>
-									<tr class="trPrint5" style="background-color: #c8560f;color: white;">
-										<td colspan="3" style="font-weight: 800;font-size: 18px">&nbsp;Personal Information</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Name
-										</td>
-										<td class="tdNamePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Academic Background
-										</td>
-										<td class="tdAcademicBackgroundPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Work Experience
-										</td>
-										<td class="tdWorkExperiencePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> </td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Cell #
-										</td>
-										<td class="tdCellNoPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Landline #
-										</td>
-										<td class="tdLandlinePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-
-
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Email
-										</td>
-										<td class="tdEmailPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Linkedin
-										</td>
-										<td class="tdLinkedinPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Facebook
-										</td>
-										<td class="tdFacebookPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-									<tr class="trPrint5" style="background-color: #c8560f;color: white;">
-										<td colspan="3" style="font-weight: 800;font-size: 18px">&nbsp;Real Estate Management Qualification</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Certificate course
-										</td>
-										<td class="tdCertificateCoursePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Diploma course
-										</td>
-										<td class="tdDiplomaCoursePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-									<tr class="trPrint5" style="background-color: #c8560f;color: white;">
-										<td colspan="3" style="font-weight: 800;font-size: 18px">&nbsp;Agency Information</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Agency name
-										</td>
-										<td class="tdAgencyNamePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Website
-										</td>
-										<td class="tdWebsitePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Designation/ Position
-										</td>
-										<td class="tdAgentDesignationPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Associated since
-										</td>
-										<td class="tdAssociatedsincePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Agency location
-										</td>
-										<td class="tdAgencylocationPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Working area
-										</td>
-										<td class="tdWorkingAreaPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"></td>
-									</tr>
-									<tr style="line-height:35px;">
-										<td style="border-bottom: 1px solid #e7eaec">
-											Dealership (if any)
-										</td>
-										<td class="tdDealershipPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary btnPrint" >Print</button>
-					</div>
-				</div>
-
-			</div>
-		</div>
-		<!--Print End-->
-
-		<div id="EditAttachments" class="modal fade" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Edit Attachments</h4>
-					</div>
+					</div>-->
 					<div class="modal-body">
-						<div class="card-body FrmAttachments">
-							<div class="card">
-								<div class="alert alert-success" role="alert">
-									Personal Attachments
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="fileinput fileinput-new" data-provides="fileinput">
-										<span class="btn btn-block btn-outline btn-primary btn-file"><span class="fileinput-new">Attach Recent Profile Picture</span>
-										<i class="fa fa-upload"></i>&nbsp;&nbsp;
-										<span class="fileinput-exists">Change</span><input type="file" name="..." class="txtFileImage_upd" accept="image/*"/></span>
-										<span class="fileinput-filename"></span>
-										<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">×</a>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="fileinput fileinput-new" data-provides="fileinput">
-										<span class="btn btn-block btn-outline btn-primary btn-file"><span class="fileinput-new">Attach Scan CNIC</span>
-										<i class="fa fa-upload"></i>&nbsp;&nbsp;
-										<span class="fileinput-exists">Change</span><input type="file"  class="txtFileCNIC_upd" accept="image/*"/></span>
-										<span class="fileinput-filename"></span>
-										<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">×</a>
-									</div> 
-								</div>
-							</div>
+						<div id="Print">
+							<table style ="width: 100%; height: 100%; color: black;
+							font-family:'open sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;">
+							<thead>	
+								<tr class="trPrint" style="background-color: #c8560f;line-height: 1.8;color: white;">
+									<td colspan="3" style="font-weight: 800;font-size:18px">&nbsp;Member's Profile</td>
+
+								</tr>
 
 
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary btnUpdateAttachments" >Update Changes</button>
+								<tr style="height:145px">
+									<td>
+										<img height="130px;" class="tdProfilePicPrint" width="130px;" alt="User Pic" src=""  style=""> 
+									</td>
+									<td><label>Membership # </label>
+										<br>
+										<label>Membership Type  </label>
+										<br>
+										<label class="tdParentDesignationPrint"> </label>
+										<br>
+										<label>Tenure</label>
+									</td>
+
+									<td align="right">
+
+										<label style="background: #c8560f;color: #fff;padding: 2px;margin: -3px;border-radius: 4px;" class="tdMembershipNoPrint"></label>
+										<br>
+
+										<label class="tdMembershipTypePrint" style="background: #c8560f;color: #fff;padding: 2px;margin: -3px;border-radius: 4px;"></label>
+										<br>
+
+										<label class="tdSubDesignationPrint" style="background: #c8560f;color: #fff;padding: 2px;margin: -3px;border-radius: 4px;"></label>
+										<br>
+
+										<label class="tdTenurePrint" style="background: #c8560f;color: #fff;padding: 2px;margin: 0px;border-radius: 4px;"></label>
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="trPrint5" style="background-color: #c8560f;color: white;">
+									<td colspan="3" style="font-weight: 800;font-size: 18px">&nbsp;Personal Information</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Name
+									</td>
+									<td class="tdNamePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Academic Background
+									</td>
+									<td class="tdAcademicBackgroundPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Work Experience
+									</td>
+									<td class="tdWorkExperiencePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> </td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Cell #
+									</td>
+									<td class="tdCellNoPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Landline #
+									</td>
+									<td class="tdLandlinePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+
+
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Email
+									</td>
+									<td class="tdEmailPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Linkedin
+									</td>
+									<td class="tdLinkedinPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Facebook
+									</td>
+									<td class="tdFacebookPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+								<tr class="trPrint5" style="background-color: #c8560f;color: white;">
+									<td colspan="3" style="font-weight: 800;font-size: 18px">&nbsp;Real Estate Management Qualification</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Certificate course
+									</td>
+									<td class="tdCertificateCoursePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Diploma course
+									</td>
+									<td class="tdDiplomaCoursePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+								<tr class="trPrint5" style="background-color: #c8560f;color: white;">
+									<td colspan="3" style="font-weight: 800;font-size: 18px">&nbsp;Agency Information</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Agency name
+									</td>
+									<td class="tdAgencyNamePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Website
+									</td>
+									<td class="tdWebsitePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Designation/ Position
+									</td>
+									<td class="tdAgentDesignationPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Associated since
+									</td>
+									<td class="tdAssociatedsincePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Agency location
+									</td>
+									<td class="tdAgencylocationPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Working area
+									</td>
+									<td class="tdWorkingAreaPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"></td>
+								</tr>
+								<tr style="line-height:35px;">
+									<td style="border-bottom: 1px solid #e7eaec">
+										Dealership (if any)
+									</td>
+									<td class="tdDealershipPrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
-
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary btnPrint" >Print</button>
+				</div>
 			</div>
-		</div>
-		<div class="footer">
-			<div>
-				<strong>Copyright</strong> REPA © 2018
-			</div>
-		</div>
 
+		</div>
+	</div>
+	<!--Print End-->
+
+	<div id="EditAttachments" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Edit Attachments</h4>
+				</div>
+				<div class="modal-body">
+					<div class="card-body FrmAttachments">
+						<div class="card">
+							<div class="alert alert-success" role="alert">
+								Personal Attachments
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="fileinput fileinput-new" data-provides="fileinput">
+									<span class="btn btn-block btn-outline btn-primary btn-file"><span class="fileinput-new">Attach Recent Profile Picture</span>
+									<i class="fa fa-upload"></i>&nbsp;&nbsp;
+									<span class="fileinput-exists">Change</span><input type="file" name="..." class="txtFileImage_upd" accept="image/*"/></span>
+									<span class="fileinput-filename"></span>
+									<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">×</a>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="fileinput fileinput-new" data-provides="fileinput">
+									<span class="btn btn-block btn-outline btn-primary btn-file"><span class="fileinput-new">Attach Scan CNIC</span>
+									<i class="fa fa-upload"></i>&nbsp;&nbsp;
+									<span class="fileinput-exists">Change</span><input type="file"  class="txtFileCNIC_upd" accept="image/*"/></span>
+									<span class="fileinput-filename"></span>
+									<a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">×</a>
+								</div> 
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary btnUpdateAttachments" >Update Changes</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="footer">
+		<div>
+			<strong>Copyright</strong> REPA © 2018
+		</div>
 	</div>
 
+</div>
 
-	<?php include("footerJS.html"); ?>
+
+<?php include("footerJS.html"); ?>
 
 
 
@@ -1400,7 +1449,13 @@ if(!isset($_SESSION['UserId'])){
 		<input type="hidden" class="hdnWebsite" value="${Website}" />
 		<input type="hidden" class="hdnFileImage" value="${FileImage}" />
 		<input type="hidden" class="hdnMembershipNo" value="${MembershipNo}" />
+		<input type="hidden" class="hdnDiplomaInstitute" value="${DiplomaInstitute}" />
+		<input type="hidden" class="hdnCertificateInstitute" value="${CertificateInstitute}" />
+		<input type="hidden" class="hdnDiplomaCertificationBody" value="${DiplomaCertificationBody}" />
+		<input type="hidden" class="hdnCertificateCertificationBody" value="${CertificateCertificationBody}" />
 		<input type="hidden" class="hdnCountryId" value="${CountryId}" />
+
+		
 		<td class="project-title tdTitle">${Title}</td>
 		<td class="project-title tdFirstName">${FirstName}</td>
 		<td class="project-title tdLastName">${LastName}</td>

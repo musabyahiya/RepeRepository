@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+<<<<<<< HEAD
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RepaLive(1)", "..\..\..\..\UwAmp\www\RepaLive\", "{7B4C581B-C998-48D2-83E2-3C482857AE49}"
+=======
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "RepaLive(1)", ".", "{7B4C581B-C998-48D2-83E2-3C482857AE49}"
+>>>>>>> Repa Changes after ashraf meeting print is still not tested. 31 dec
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_61792"
