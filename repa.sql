@@ -1107,7 +1107,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `years`
   ADD PRIMARY KEY (`YearId`);
-
+ 
 --
 -- AUTO_INCREMENT for dumped tables
 --
