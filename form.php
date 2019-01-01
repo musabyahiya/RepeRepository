@@ -88,7 +88,7 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="text">Last name</label>
-                  <input type="text" class="form-control txtLastName" id="txtLastName" placeholder="Enter middle name">
+                  <input type="text" class="form-control txtLastName" id="txtLastName" placeholder="Enter last name">
                 </div>
               </div>
               <div class="col-md-3">
@@ -248,7 +248,7 @@
                 <div class="form-group">
                   <label for="txtWorkArea">Working area</label>
                   &nbsp; <a href="javascript:void(0)" style="color:black" onclick="AppendAddWorkArea(this)"><i class="fas fa-plus-square"></i></a>
-                  <input type="text" class="form-control txtWorkArea" id="txtWorkArea" placeholder="Enter work area">
+                  <input type="text" class="form-control txtWorkArea" id="txtWorkArea" placeholder="Enter working area">
                 </div>
               </div>
 

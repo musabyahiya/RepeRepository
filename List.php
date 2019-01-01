@@ -97,7 +97,7 @@
               <div class=" col-md-9 col-lg-9 " style="margin-top: 25px;"> 
                 <div class="panel-heading">
                   <div>
-                    <h6 class="top-modal" class="tdMembershipNo" style=" float: right; font-size:14px;margin-left:5px;"></h6>
+                    <h6 class="top-modal tdMembershipNo"  style=" float: right; font-size:14px;margin-left:5px;"></h6>
                     <h6 class="panel-title" style="float: right;font-size:14px;">Membership#</h6>
 
 
@@ -242,7 +242,7 @@
     </div>
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary btnPrint">Print</button>
+   <!--   <button type="button" class="btn btn-primary btnPrint">Print</button>-->
       <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
     </div>
 

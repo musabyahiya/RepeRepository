@@ -157,7 +157,7 @@ if(!isset($_SESSION['UserId'])){
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label for="txtFatherName">Father name</label>
+												<label for="txtFatherName">Father Name</label>
 												<input type="text" class="form-control txtFatherName" id="txtFatherName" placeholder="Enter father name">
 											</div>
 										</div>
@@ -459,6 +459,14 @@ if(!isset($_SESSION['UserId'])){
 										</div>
 										<div class="col-md-4">
 											<div class="form-group">
+												<label for="ddlCountry">Country</label>
+												<select class="form-control ddlCountry">
+												</select>
+
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
 												<label for="ddlPassedYear">Passed Year</label>
 												<select class="form-control ddlPassedYear" >
 												</select>
@@ -563,14 +571,14 @@ if(!isset($_SESSION['UserId'])){
 
 										<div class="col-md-3">
 											<div class="form-group">
-												<label for="ddlParentDesignation">Management Comit</label>
+												<label for="ddlParentDesignation">Management committee</label>
 												<select class="form-control ddlParentDesignation">
 												</select>
 											</div>
 										</div>
 										<div class="col-md-3">
 											<div class="form-group">
-												<label for="ddlDesignation">Sub Comity</label>
+												<label for="ddlDesignation">Sub committee</label>
 												<select class="form-control ddlDesignation">
 												</select>
 											</div>
@@ -950,6 +958,14 @@ if(!isset($_SESSION['UserId'])){
 										</div>
 										<div class="col-md-4">
 											<div class="form-group">
+												<label for="ddlCountry_upd">Country</label>
+												<select class="form-control ddlCountry_upd">
+												</select>
+
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
 												<label for="ddlPassedYear_upd">Passed Year</label>
 												<select class="form-control ddlPassedYear_upd" >
 												</select>
@@ -1099,29 +1115,32 @@ if(!isset($_SESSION['UserId'])){
 
 					<!-- Modal content-->
 					<div class="modal-content">
-						<div class="modal-header">
+						<!--<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Modal Header</h4>
-						</div>
+						<h4 class="modal-title">Modal Header</h4>
+						</div>-->
 						<div class="modal-body">
 							<div id="Print">
 								<table style ="width: 100%; height: 100%; color: black;
 								font-family:'open sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size:14px;">
-								<thead>
-									<tr class="trPrint" style="background-color: #c8560f;line-height: 2.1;color: white;">
-										<td colspan="3" style="font-weight: 800;font-size: 16px">&nbsp;Member's Profile</td>
+								<thead>	
+									<tr class="trPrint" style="background-color: #c8560f;line-height: 1.8;color: white;">
+										<td colspan="3" style="font-weight: 800;font-size:18px">&nbsp;Member's Profile</td>
+											
 									</tr>
+		
+							
 									<tr style="height:145px">
 										<td>
 											<img height="130px;" class="tdProfilePicPrint" width="130px;" alt="User Pic" src=""  style=""> 
 										</td>
-										<td><label>Membership: </label>
+										<td><label>Membership # </label>
 											<br>
-											<label>Membership Type: </label>
+											<label>Membership Type  </label>
 											<br>
 											<label class="tdParentDesignationPrint"> </label>
 											<br>
-											<label>Tenure:</label>
+											<label>Tenure</label>
 										</td>
 
 										<td align="right">
@@ -1135,13 +1154,13 @@ if(!isset($_SESSION['UserId'])){
 											<label class="tdSubDesignationPrint" style="background: #c8560f;color: #fff;padding: 2px;margin: -3px;border-radius: 4px;"></label>
 											<br>
 
-											<label class="tdTenurePrint" style="background: #c8560f;color: #fff;padding: 2px;margin: 0px;border-radius: 4px;">2018-11-17 to 2018-12-18</label>
+											<label class="tdTenurePrint" style="background: #c8560f;color: #fff;padding: 2px;margin: 0px;border-radius: 4px;"></label>
 										</td>
 									</tr>
-								</thead>
+						        	</thead>
 								<tbody>
 									<tr class="trPrint5" style="background-color: #c8560f;color: white;">
-										<td colspan="3" style="font-weight: 800;font-size: 16px">&nbsp;Personal Information</td>
+										<td colspan="3" style="font-weight: 800;font-size: 18px">&nbsp;Personal Information</td>
 									</tr>
 									<tr style="line-height:35px;">
 										<td style="border-bottom: 1px solid #e7eaec">
@@ -1173,7 +1192,7 @@ if(!isset($_SESSION['UserId'])){
 
 									<tr style="line-height:35px;">
 										<td style="border-bottom: 1px solid #e7eaec">
-											Landline
+											Landline #
 										</td>
 										<td class="tdLandlinePrint" style="border-bottom: 1px solid #e7eaec" colspan="2"> 
 										</td>
@@ -1202,8 +1221,7 @@ if(!isset($_SESSION['UserId'])){
 										</td>
 									</tr>
 									<tr class="trPrint5" style="background-color: #c8560f;color: white;">
-										<td colspan="3" style="font-weight: 800;font-size: 16px">&nbsp;
-										Real Estate Management Qualification</td>
+										<td colspan="3" style="font-weight: 800;font-size: 18px">&nbsp;Real Estate Management Qualification</td>
 									</tr>
 									<tr style="line-height:35px;">
 										<td style="border-bottom: 1px solid #e7eaec">
@@ -1220,7 +1238,7 @@ if(!isset($_SESSION['UserId'])){
 										</td>
 									</tr>
 									<tr class="trPrint5" style="background-color: #c8560f;color: white;">
-										<td colspan="3" style="font-weight: 800;font-size: 16px">&nbsp;Agency information</td>
+										<td colspan="3" style="font-weight: 800;font-size: 18px">&nbsp;Agency Information</td>
 									</tr>
 									<tr style="line-height:35px;">
 										<td style="border-bottom: 1px solid #e7eaec">
@@ -1382,6 +1400,7 @@ if(!isset($_SESSION['UserId'])){
 		<input type="hidden" class="hdnWebsite" value="${Website}" />
 		<input type="hidden" class="hdnFileImage" value="${FileImage}" />
 		<input type="hidden" class="hdnMembershipNo" value="${MembershipNo}" />
+		<input type="hidden" class="hdnCountryId" value="${CountryId}" />
 		<td class="project-title tdTitle">${Title}</td>
 		<td class="project-title tdFirstName">${FirstName}</td>
 		<td class="project-title tdLastName">${LastName}</td>
